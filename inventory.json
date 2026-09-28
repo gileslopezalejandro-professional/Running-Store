@@ -1,0 +1,821 @@
+{
+  "_nota": "Inventario. Reemplazar por la BD/API con el mismo esquema. sizes: talla BR -> 'stock'; no listadas = 'encargo'. rr = datos de laboratorio de RunRepeat (runrepeat.com), null = no publicado/no verificado.",
+  "products": [
+    {
+      "id": "novablast-6",
+      "family": "Novablast",
+      "name": "Novablast 6",
+      "brand": "ASICS",
+      "uses": [
+        "correr"
+      ],
+      "priceUSD": 150,
+      "feel": "Reactiva",
+      "type": "reactiva",
+      "badge": "Nuevo",
+      "gen": 6,
+      "forWho": "Para correr todos los días: salidas suaves, entrenamientos rápidos y hasta tu primer 21K. Ideal si apoyás primero la parte de adelante del pie.",
+      "feelsLike": "Suave al aterrizar y con mucho rebote al despegar desde la punta.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-novablast-6",
+        "score": null,
+        "weight": null,
+        "drop": "7.1 mm",
+        "stack": "39.2 / 32.1 mm",
+        "sa": null,
+        "er": "55.4% / 69.1%",
+        "fit": "Talla normal",
+        "highlight": "Rebote muy alto en la parte delantera (69.1%) gracias a su espuma FF Turbo².",
+        "caveat": "Atrás rebota menos que adelante: si apoyás fuerte el talón, vas a sentir menos impulso."
+      },
+      "genders": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "novablast-5",
+      "family": "Novablast",
+      "name": "Novablast 5",
+      "brand": "ASICS",
+      "uses": [
+        "correr"
+      ],
+      "priceUSD": 135,
+      "feel": "Reactiva",
+      "type": "reactiva",
+      "gen": 5,
+      "forWho": "Máxima amortiguación con rebote, para sumar kilómetros de 5K a 21K.",
+      "feelsLike": "Mullida y juguetona. Protege mucho y todavía invita a apurar el ritmo.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-novablast-5",
+        "score": null,
+        "weight": null,
+        "drop": null,
+        "stack": null,
+        "sa": "141 / 134 SA",
+        "er": "63.6% / 66.5%",
+        "fit": "Base ancha (97.6 mm)",
+        "highlight": "Una de las más acolchadas que midieron (141 SA en el talón) y con buen rebote.",
+        "caveat": "Poco agarre en piso mojado y la tela de arriba se gasta rápido en la punta (durabilidad 1/5)."
+      },
+      "genders": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "gel-nimbus-28",
+      "family": "GEL-Nimbus",
+      "name": "GEL-Nimbus 28",
+      "brand": "ASICS",
+      "uses": [
+        "correr",
+        "todo-el-dia"
+      ],
+      "priceUSD": 170,
+      "feel": "Suave",
+      "type": "suave",
+      "badge": "Nuevo",
+      "gen": 28,
+      "forWho": "Comodidad total para correr largo y tranquilo, o para pasar el día entero de pie.",
+      "feelsLike": "Protectora y estable. Te abraza el pie de forma casi perfecta.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-gel-nimbus-28",
+        "score": 86,
+        "weight": "278 g",
+        "drop": "5.2 mm",
+        "stack": null,
+        "sa": "137 / 133 SA",
+        "er": null,
+        "fit": "Talla normal",
+        "highlight": "El mejor Nimbus de los últimos cinco años según RunRepeat: 7% más liviano que el 27 (278 g).",
+        "caveat": "No es para quien busca rebote; ventila un poco menos que el promedio."
+      },
+      "genders": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "gel-nimbus-27",
+      "family": "GEL-Nimbus",
+      "name": "GEL-Nimbus 27",
+      "brand": "ASICS",
+      "uses": [
+        "correr",
+        "todo-el-dia"
+      ],
+      "priceUSD": 160,
+      "feel": "Suave",
+      "type": "suave",
+      "gen": 27,
+      "forWho": "Acolchado premium para correr tranquilo, caminar y estar de pie todo el día.",
+      "feelsLike": "Mucha espuma abajo, pero más firme de lo que parece. Nada blanda ni inestable.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-gel-nimbus-27",
+        "score": null,
+        "weight": "299 g",
+        "drop": "8.3 mm",
+        "stack": null,
+        "sa": "136 / 136 SA",
+        "er": null,
+        "fit": "Talla normal",
+        "highlight": "Acolchado de primer nivel y parejo: 136 SA tanto atrás como adelante.",
+        "caveat": "Pesada (299 g) y más firme que un tenis tipo 'nube'."
+      },
+      "genders": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "gel-cumulus-28",
+      "family": "GEL-Cumulus",
+      "name": "GEL-Cumulus 28",
+      "brand": "ASICS",
+      "uses": [
+        "correr",
+        "todo-el-dia"
+      ],
+      "priceUSD": 145,
+      "feel": "Suave",
+      "type": "suave",
+      "gen": 28,
+      "forWho": "Tu primer par en serio: cómodo, todoterreno y pensado para quien apoya primero el talón, de 5K a 21K.",
+      "feelsLike": "Cómoda y confiable desde el primer día, sin tiempo de acostumbrarte.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-gel-cumulus-28",
+        "score": 86,
+        "weight": "252 g",
+        "drop": "13.3 mm",
+        "stack": "42.8 / 29.5 mm",
+        "sa": "139 / 110 SA",
+        "er": "50.5% / 52.5%",
+        "fit": "Talla normal",
+        "highlight": "Liviana para su tipo (252 g) y muy protectora en el talón (139 SA).",
+        "caveat": "Talón bastante más alto que la punta (13.3 mm) y poco rebote: va mejor si apoyás primero el talón."
+      },
+      "genders": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "gt-2000-14",
+      "family": "GT-2000",
+      "name": "GT-2000 14",
+      "brand": "ASICS",
+      "uses": [
+        "correr"
+      ],
+      "priceUSD": 140,
+      "feel": "Estable",
+      "type": "estable",
+      "gen": 14,
+      "forWho": "Estabilidad para quien pisa hacia adentro, ahora con una espuma más viva.",
+      "feelsLike": "Te acompaña el paso sin sentirse dura. Firme, predecible y duradera.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-gt-2000-14",
+        "score": 87,
+        "weight": null,
+        "drop": "8.7 mm",
+        "stack": "36.9 / 28.2 mm",
+        "sa": null,
+        "er": null,
+        "fit": "Punta angosta",
+        "highlight": "Uno de los tenis de estabilidad más confiables según RunRepeat; la suela dura muchísimo.",
+        "caveat": "Punta angosta y ventila poco; no es ideal para pies anchos."
+      },
+      "genders": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "id": "gt-2000-13",
+      "family": "GT-2000",
+      "name": "GT-2000 13",
+      "brand": "ASICS",
+      "uses": [
+        "correr"
+      ],
+      "priceUSD": 140,
+      "feel": "Estable",
+      "type": "estable",
+      "gen": 13,
+      "forWho": "Soporte y acolchado medio para quien pisa hacia adentro.",
+      "feelsLike": "Estable y más firme que el 14. Kilómetro tras kilómetro, sin sorpresas.",
+      "rr": {
+        "url": "https://runrepeat.com/catalog/asics-gt-2000-running-shoes",
+        "score": 87,
+        "weight": null,
+        "drop": null,
+        "stack": null,
+        "sa": null,
+        "er": null,
+        "fit": null,
+        "highlight": "Puntaje RunRepeat 87 (muy bueno), igual que el GT-2000 14.",
+        "caveat": "Espuma más firme y plana que la del 14."
+      },
+      "genders": [
+        "M",
+        "F"
+      ]
+    },
+    {
+      "brand": "ASICS",
+      "genders": [
+        "M",
+        "F"
+      ],
+      "id": "superblast-3",
+      "family": "Superblast",
+      "name": "SUPERBLAST 3",
+      "uses": [
+        "correr"
+      ],
+      "priceUSD": 210,
+      "feel": "Reactiva",
+      "type": "reactiva",
+      "badge": "Nuevo",
+      "gen": 3,
+      "forWho": "Para correr rápido y largo con un solo par: entrenamientos fuertes, fondos y hasta tu maratón.",
+      "feelsLike": "Liviana, muy alta y con un rebote que te empuja hacia adelante.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-superblast-3",
+        "highlight": "Mucho acolchado con poco peso, pensada para entrenar a ritmo alto.",
+        "caveat": "Precio alto; si solo corrés tranquilo, un Novablast te rinde igual."
+      }
+    },
+    {
+      "brand": "ASICS",
+      "genders": [
+        "M",
+        "F"
+      ],
+      "id": "sonicblast-2",
+      "family": "Sonicblast",
+      "name": "SONICBLAST 2",
+      "uses": [
+        "correr"
+      ],
+      "priceUSD": 190,
+      "feel": "Reactiva",
+      "type": "reactiva",
+      "badge": "Nuevo",
+      "gen": 2,
+      "forWho": "Para entrenamientos rápidos y carreras de 10K a 21K, con placa que te da impulso.",
+      "feelsLike": "Firme y ágil. Se siente rápida desde el primer paso.",
+      "rr": {
+        "url": "https://runrepeat.com/asics-sonicblast-2",
+        "highlight": "Placa interna que da un empujón extra en cada paso.",
+        "caveat": "Más firme que un Novablast; para salidas tranquilas no es la más cómoda."
+      }
+    }
+  ],
+  "colors": {
+    "novablast-6": [
+      {
+        "name": "Negro/Caqui",
+        "hex": "#1A1A1A",
+        "sku": "ANB6M1",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M1-1.jpg&nw=1000",
+        "sizes": {
+          "39": "stock",
+          "40": "stock",
+          "41": "stock",
+          "42": "stock"
+        }
+      },
+      {
+        "name": "Aqua Energía/Blanco",
+        "hex": "#3FC6C0",
+        "sku": "ANB6M9",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M9-1.jpg&nw=1000",
+        "sizes": {
+          "40": "stock",
+          "41": "stock"
+        }
+      },
+      {
+        "name": "Verde Azulado Niebla/Amarillo Iluminado",
+        "hex": "#4E7F7A",
+        "sku": "ANB6M4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M4-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Amarillo Iluminado/Negro",
+        "hex": "#E6E23A",
+        "sku": "ANB6M5",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M5-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Medianoche/Aqua Energía",
+        "hex": "#1E2A44",
+        "sku": "ANB6M7",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M7-1.jpg&nw=1000",
+        "sizes": {
+          "40": "stock"
+        }
+      },
+      {
+        "name": "Rosa Polvo/Amarillo",
+        "hex": "#E7C3C0",
+        "sku": "ANB6M0",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M0-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Aire Sólido/Azul Prusia",
+        "hex": "#D7DCE0",
+        "sku": "ANB6M8",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M8-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Aqua Energía",
+        "hex": "#EEF6F6",
+        "sku": "ANB6M2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M2-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Naranja Brillo",
+        "hex": "#F5EEE8",
+        "sku": "ANB6MA",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6MA-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Blanco",
+        "hex": "#F4F4F2",
+        "sku": "ANB6M6",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M6-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Negro/Negro",
+        "hex": "#111111",
+        "sku": "ANB6M3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB6M3-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "novablast-5": [
+      {
+        "name": "Azul Ártico/Azul Egeo",
+        "hex": "#9CC7E4",
+        "sku": "ANB5M4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB5M4-1.jpg&nw=1000",
+        "sizes": {
+          "40": "stock",
+          "42": "stock"
+        }
+      },
+      {
+        "name": "Gris ATC/Plata Pura",
+        "hex": "#9A9DA1",
+        "sku": "ANB5M7",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB5M7-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Negro/Azul Degradé",
+        "hex": "#15171C",
+        "sku": "A5NM01",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A5NM01-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Negro/Gris Carrier",
+        "hex": "#1B1B1B",
+        "sku": "A5NBM03",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A5NBM03-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Negro/Cobalto Intenso",
+        "hex": "#121418",
+        "sku": "ANB5M2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB5M2-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Musgo Frío/Naranja Claro",
+        "hex": "#B9C6B0",
+        "sku": "ANB5M3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB5M3-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Grava/Blanco",
+        "hex": "#8A8C8E",
+        "sku": "ANB5M1",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB5M1-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Medianoche/Naranja Brillo",
+        "hex": "#1E2A44",
+        "sku": "A5NM02",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A5NM02-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Avena/Negro",
+        "hex": "#D9CFBE",
+        "sku": "A5NM05",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A5NM05-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Cielo/Limón",
+        "hex": "#BFE0F0",
+        "sku": "ANB5M8",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ANB5M8-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Gris Piedmont",
+        "hex": "#F2F2F0",
+        "sku": "A5NBM02",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A5NBM02-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "gel-nimbus-28": [
+      {
+        "name": "Negro/Gris Pluma",
+        "hex": "#111111",
+        "sku": "AGN28M5",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28M5-1.jpg&nw=1000",
+        "sizes": {
+          "40": "stock",
+          "41": "stock"
+        }
+      },
+      {
+        "name": "Negro/Cobalto Intenso",
+        "hex": "#121418",
+        "sku": "AGN28M2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28M2-1.jpg&nw=1000",
+        "sizes": {
+          "39": "stock"
+        }
+      },
+      {
+        "name": "Negro/Gris Grafito",
+        "hex": "#1B1C1E",
+        "sku": "AGN28MA",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28MA-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris Nube/Crema",
+        "hex": "#D9DEDB",
+        "sku": "AGN28M4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28M4-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Musgo Frío/Verde Iluminado",
+        "hex": "#B9C6B0",
+        "sku": "AGN28M6",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28M6-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Crema/Negro",
+        "hex": "#EFE8D8",
+        "sku": "AGN28M7",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28M7-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Aqua Energía/Medianoche",
+        "hex": "#3FC6C0",
+        "sku": "AGN28MH",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28MH-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris Pluma/Crema",
+        "hex": "#DADCDC",
+        "sku": "AGN28MB",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28MB-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris Azulado/Negro",
+        "hex": "#7C8896",
+        "sku": "AGN28M3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN28M3-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "gel-nimbus-27": [
+      {
+        "name": "Negro/Azul",
+        "hex": "#121418",
+        "sku": "AGN27M1",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN27M1-1.jpg&nw=1000",
+        "sizes": {
+          "41": "stock",
+          "42": "stock",
+          "43": "stock"
+        }
+      },
+      {
+        "name": "Negro/Naranja",
+        "hex": "#15171C",
+        "sku": "AGN27M2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN27M2-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Beige",
+        "hex": "#F2EEE4",
+        "sku": "AGN27M3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN27M3-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris/Lima",
+        "hex": "#A9ABAD",
+        "sku": "AGN27M0",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN27M0-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Amarillo",
+        "hex": "#E6E23A",
+        "sku": "AGN27M4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGN27M4-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "gel-cumulus-28": [
+      {
+        "name": "Negro/Blanco",
+        "hex": "#111111",
+        "sku": "AGC28M4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M4-1.jpg&nw=1000",
+        "sizes": {
+          "40": "stock"
+        }
+      },
+      {
+        "name": "Azul Ártico/Azul Egeo",
+        "hex": "#9CC7E4",
+        "sku": "AGC28M2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M2-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Negro/Verde Iluminado",
+        "hex": "#15171C",
+        "sku": "AGC28M5",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M5-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris Nube/Aqua Energía",
+        "hex": "#C9CDD0",
+        "sku": "AGC28MA",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28MA-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Helecho/Marfil",
+        "hex": "#B7BFA8",
+        "sku": "AGC28M7",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M7-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Grava/Azul Ártico",
+        "hex": "#8A8C8E",
+        "sku": "AGC28M3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M3-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Medianoche/Verde Caqui",
+        "hex": "#1E2A44",
+        "sku": "AGC28MD",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28MD-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Azul Crepúsculo/Yamabuki",
+        "hex": "#2C3E66",
+        "sku": "AGC28M1",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M1-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Naranja Energía",
+        "hex": "#F7EDE6",
+        "sku": "AGC28MC",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28MC-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Amarillo/Aqua Energía",
+        "hex": "#E6E23A",
+        "sku": "AGC28MB",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28MB-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Negro/Gris Carrier",
+        "hex": "#1B1B1B",
+        "sku": "AGC28M6",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M6-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Musgo Frío/Verde",
+        "hex": "#B9C6B0",
+        "sku": "AGC28M8",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AGC28M8-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "gt-2000-14": [
+      {
+        "name": "Negro/Blanco",
+        "hex": "#111111",
+        "sku": "A14G2M4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A14G2M4-1.jpg&nw=1000",
+        "sizes": {
+          "41": "stock",
+          "42": "stock"
+        }
+      },
+      {
+        "name": "Azul marino",
+        "hex": "#1E2A55",
+        "sku": "A14G2M5",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A14G2M5-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris",
+        "hex": "#A9ABAD",
+        "sku": "A14G2M2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A14G2M2-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Verde grisáceo",
+        "hex": "#6C7A70",
+        "sku": "A14G2M3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A14G2M3-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Beige",
+        "hex": "#EDE3D0",
+        "sku": "A14G2M6",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A14G2M6-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Lila/Lima",
+        "hex": "#DADCF0",
+        "sku": "A14G2M0",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A14G2M0-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Amarillo",
+        "hex": "#E6E23A",
+        "sku": "A14G2M1",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A14G2M1-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "gt-2000-13": [
+      {
+        "name": "Negro/Crema",
+        "hex": "#111111",
+        "sku": "A13G2M2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M2-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Azul marino",
+        "hex": "#23336A",
+        "sku": "A13G2M3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M3-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Celeste",
+        "hex": "#E6EEF6",
+        "sku": "A13G2M1",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M1-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris",
+        "hex": "#9A9DA1",
+        "sku": "A13G2M6",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M6-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris oscuro/Lima",
+        "hex": "#5A5C5F",
+        "sku": "A13G2M7",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M7-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Gris/Verde azulado",
+        "hex": "#B5B8BB",
+        "sku": "A13G2M4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M4-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Menta",
+        "hex": "#D7E8E2",
+        "sku": "A13G2M8",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M8-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Lima",
+        "hex": "#DDEFA4",
+        "sku": "A13G2M5",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M5-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Coral",
+        "hex": "#F2956B",
+        "sku": "A13G2M0",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=A13G2M0-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "superblast-3": [
+      {
+        "name": "Concha Marina/Coral Sol",
+        "hex": "#F2C9B8",
+        "sku": "AS3SB3",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AS3SB3-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Negro",
+        "hex": "#F4F4F2",
+        "sku": "AS3SB2",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AS3SB2-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Negro/Negro",
+        "hex": "#111111",
+        "sku": "AS3SB5",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AS3SB5-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Naranja Brillo",
+        "hex": "#F5EEE8",
+        "sku": "AS3SB6",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AS3SB6-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Amarillo/Aqua",
+        "hex": "#E6E23A",
+        "sku": "AS3SB4",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=AS3SB4-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ],
+    "sonicblast-2": [
+      {
+        "name": "Aqua Energía/Amarillo",
+        "hex": "#3FC6C0",
+        "sku": "ASSBM5",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ASSBM5-1.jpg&nw=1000",
+        "sizes": {}
+      },
+      {
+        "name": "Blanco/Naranja Estadio",
+        "hex": "#F5EEE8",
+        "sku": "ASSBM6",
+        "image": "https://img.runningwarehouse.com/watermark/rs.php?path=ASSBM6-1.jpg&nw=1000",
+        "sizes": {}
+      }
+    ]
+  }
+}

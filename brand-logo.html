@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+body{margin:0;background:#F5F5F7;color:#0B0D10;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#D63A5B;text-decoration:none}
+a:hover{color:#A8263F}
+</style>
+</helmet>
+<div style="padding:64px;display:flex;flex-direction:column;gap:40px;max-width:1440px;margin:0 auto;">
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <span style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D63A5B;">Dromos · Logo</span>
+    <h1 style="margin:0;font-size:48px;letter-spacing:-0.035em;font-weight:700;">Versiones del logo</h1>
+    <p style="margin:0;font-size:17px;color:#6E6E73;">Rojo rosado #D63A5B sin degradados. Fondo blanco, negro para contraste, rojo solo como acento.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:20px;">
+    <div id="completa" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#FFFFFF;border-radius:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <img src="brand/dromos-runner-red.svg" alt="Dromos" style="height:120px;width:auto;">
+          <span style="font-size:64px;font-weight:800;letter-spacing:-0.035em;line-height:1;color:#D63A5B;">Dromos</span>
+          <span style="font-size:14px;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;color:#D63A5B;">Built to Run</span>
+        </div>
+      </div>
+      <span style="font-size:14px;font-weight:600;">01 · Completa</span>
+    </div>
+
+    <div id="horizontal" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#FFFFFF;border-radius:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <img src="brand/dromos-runner-red.svg" alt="" style="height:76px;width:auto;">
+          <span style="font-size:60px;font-weight:800;letter-spacing:-0.035em;line-height:1;color:#D63A5B;">Dromos</span>
+        </div>
+      </div>
+      <span style="font-size:14px;font-weight:600;">02 · Corredor + Dromos</span>
+    </div>
+
+    <div id="icono" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#FFFFFF;border-radius:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;gap:28px;">
+        <div style="width:160px;height:160px;border-radius:50%;background:#FFFFFF;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center;"><img src="brand/dromos-runner-red.svg" alt="" style="width:108px;"></div>
+        <div style="width:96px;height:96px;border-radius:22px;background:#D63A5B;display:flex;align-items:center;justify-content:center;"><img src="brand/dromos-runner-white.svg" alt="" style="width:66px;"></div>
+      </div>
+      <span style="font-size:14px;font-weight:600;">03 · Solo corredor · perfil e íconos</span>
+    </div>
+
+    <div id="blanco-negro" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#0B0D10;border-radius:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <img src="brand/dromos-runner-white.svg" alt="" style="height:110px;width:auto;">
+          <span style="font-size:60px;font-weight:800;letter-spacing:-0.035em;line-height:1;color:#FFFFFF;">Dromos</span>
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;color:#FFFFFF;">Built to Run</span>
+        </div>
+      </div>
+      <span style="font-size:14px;font-weight:600;">04 · Blanca sobre negro</span>
+    </div>
+
+    <div id="negro-blanco" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#FFFFFF;border-radius:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <img src="brand/dromos-runner-black.svg" alt="" style="height:110px;width:auto;">
+          <span style="font-size:60px;font-weight:800;letter-spacing:-0.035em;line-height:1;color:#0B0D10;">Dromos</span>
+          <span style="font-size:13px;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;color:#0B0D10;">Built to Run</span>
+        </div>
+      </div>
+      <span style="font-size:14px;font-weight:600;">05 · Negra sobre blanco</span>
+    </div>
+
+    <div id="paleta" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#FFFFFF;border-radius:24px;aspect-ratio:4/3;display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:8px;padding:8px;">
+        <div style="grid-row:span 2;border-radius:18px;background:#FFFFFF;border:1px solid #E5E5E5;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;"><span style="font-size:15px;font-weight:600;">Blanco</span><span style="font-size:13px;color:#6E6E73;">#FFFFFF · base</span></div>
+        <div style="border-radius:18px;background:#0B0D10;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;"><span style="font-size:15px;font-weight:600;color:#FFFFFF;">Negro</span><span style="font-size:13px;color:#B4B8BE;">#0B0D10</span></div>
+        <div style="border-radius:18px;background:#D63A5B;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;"><span style="font-size:15px;font-weight:600;color:#FFFFFF;">Rojo rosado</span><span style="font-size:13px;color:#FFFFFF;">#D63A5B · acento</span></div>
+      </div>
+      <span style="font-size:14px;font-weight:600;">Paleta</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

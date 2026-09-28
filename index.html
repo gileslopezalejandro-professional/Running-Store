@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#FFFFFF;color:#1D1D1F;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#1D1D1F;text-decoration:none}
+a:hover{color:#D63A5B}
+input,button{font-family:inherit}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="min-height:100vh;background:{{ stageBg }};">
+<div style="background:#FFFFFF;overflow-x:hidden;max-width:{{ frameW }};margin:0 auto;box-shadow:{{ frameShadow }};">
+<div ref="{{ rootRef }}" style="container-type:inline-size;">
+
+
+<header style="position:sticky;top:0;z-index:20;background:rgba(255,255,255,0.86);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid #E5E5E5;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4cqi,48px);height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+    <a href="#top" aria-label="Dromos" style="display:flex;align-items:center;gap:8px;color:#D63A5B;flex-shrink:0;"><img src="brand/dromos-runner-red.svg" alt="" style="height:30px;width:auto;display:block;"><span style="font-weight:800;font-size:24px;letter-spacing:-0.03em;line-height:1;color:#D63A5B;">{{ brand }}</span></a>
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:clamp(14px,2.2cqi,32px);font-size:14px;font-weight:700;flex:1;justify-content:center;white-space:nowrap;">
+        <a href="#catalogo" onClick="{{ navRun }}">Correr</a>
+        <a href="#catalogo" onClick="{{ navDay }}">Todo el día</a>
+        <a href="#como-funciona">Fitting</a>
+        <a href="#tallas">Tallas</a>
+        <a href="#finder">Shoe Finder</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:4px;flex-shrink:0;">
+        <button onClick="{{ openSearch }}" aria-label="Buscar" style="width:40px;height:40px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;" style-hover="background:#F5F5F7"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B0D10" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+        <button onClick="{{ openCart }}" aria-label="Carrito" style="position:relative;width:40px;height:40px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;" style-hover="background:#F5F5F7"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B0D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:2px;right:0;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#D63A5B;color:#FFFFFF;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;">{{ cartCount }}</span></sc-if></button>
+        <a href="{{ waGeneral }}" target="_blank" aria-label="WhatsApp" style="margin-left:8px;display:flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;background:#0B0D10;color:#FFFFFF;font-size:14px;font-weight:500;flex-shrink:0;"><img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="" style="width:18px;height:18px;">WhatsApp</a>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button onClick="{{ openSearch }}" aria-label="Buscar" style="width:44px;height:44px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;" style-hover="background:#F5F5F7"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B0D10" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg></button>
+        <button onClick="{{ openCart }}" aria-label="Carrito" style="position:relative;width:44px;height:44px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;" style-hover="background:#F5F5F7"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0B0D10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6L5 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg><sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:2px;right:0;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#D63A5B;color:#FFFFFF;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;">{{ cartCount }}</span></sc-if></button>
+        
+        <button onClick="{{ toggleMenu }}" aria-label="Menú" style="width:44px;height:44px;border-radius:50%;border:1px solid #E5E5E5;background:#FFFFFF;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;"><span style="width:16px;height:2px;border-radius:2px;background:#0B0D10;"></span><span style="width:16px;height:2px;border-radius:2px;background:#0B0D10;"></span></button>
+      </div>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:8px 20px 20px;border-top:1px solid #E5E5E5;background:#FFFFFF;">
+      <a href="#catalogo" onClick="{{ navRunM }}" style="height:52px;display:flex;align-items:center;font-size:20px;font-weight:600;border-bottom:1px solid #F0F0F2;">Correr</a>
+      <a href="#catalogo" onClick="{{ navDayM }}" style="height:52px;display:flex;align-items:center;font-size:20px;font-weight:600;border-bottom:1px solid #F0F0F2;">Todo el día</a>
+      <a href="#como-funciona" onClick="{{ closeMenu }}" style="height:52px;display:flex;align-items:center;font-size:20px;font-weight:600;border-bottom:1px solid #F0F0F2;">Fitting</a>
+      <a href="#tallas" onClick="{{ closeMenu }}" style="height:52px;display:flex;align-items:center;font-size:20px;font-weight:600;border-bottom:1px solid #F0F0F2;">Tallas</a>
+      <a href="#finder" onClick="{{ closeMenu }}" style="height:52px;display:flex;align-items:center;font-size:20px;font-weight:600;border-bottom:1px solid #F0F0F2;">Shoe Finder</a>
+      <a href="{{ waGeneral }}" target="_blank" style="height:52px;display:flex;align-items:center;gap:10px;font-size:20px;font-weight:600;"><img src="https://cdn.simpleicons.org/whatsapp/0B0D10" alt="" style="width:20px;height:20px;">WhatsApp</a>
+    </nav>
+  </sc-if>
+</header>
+
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:calc(100svh - 60px);display:flex;align-items:{{ heroAlign }};justify-content:center;overflow:hidden;background:#FFFFFF;">
+  <div style="position:absolute;top:0;bottom:{{ heroSlotBottom }};right:0;left:{{ heroSlotLeft }};background:#FFFFFF;">
+    <image-slot id="hero-runner" shape="rect" placeholder="Foto hero"></image-slot>
+  </div>
+  <div style="position:absolute;inset:0;pointer-events:none;opacity:{{ heroOverlay }};transition:opacity .3s ease;background:{{ heroGrad }};"></div>
+  <span style="position:absolute;top:16px;right:16px;max-width:320px;pointer-events:none;font-size:12px;line-height:1.4;color:#6E6E73;display:{{ heroNoteDisplay }};opacity:{{ heroNote }};text-align:right;">Foto IA realista: corredor/a al amanecer en una avenida arbolada de Santa Cruz, zapatillas negras o blancas, luz dorada natural.</span>
+  <div style="position:relative;pointer-events:none;width:100%;max-width:1280px;margin:0 auto;padding:{{ heroPad }};">
+    <div style="display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:22px;max-width:640px;">
+      
+      <h1 style="margin:0;font-size:clamp(38px,6.6cqi,92px);line-height:1.02;letter-spacing:-0.035em;font-weight:700;color:{{ heroInk }};text-wrap:balance;">Corré mejor. Andá cómodo todo el día.</h1>
+      <p style="margin:0;font-size:clamp(17px,1.5cqi,20px);line-height:1.5;color:{{ heroSub }};max-width:540px;text-wrap:pretty;">Calzado de running premium, elegido par por par. Probátelo antes, encontrá tu talla exacta y sentí la diferencia desde el primer momento.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;pointer-events:auto;">
+        <a href="#catalogo" style="height:52px;padding:0 28px;border-radius:999px;background:{{ heroBtnBg }};color:{{ heroBtnFg }};font-weight:600;font-size:16px;display:flex;align-items:center;">Encontrá tu par</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Comprá por uso" style="min-height:calc(100svh - 60px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;max-width:1280px;margin:0 auto;padding:clamp(40px,6cqi,80px) clamp(20px,4cqi,48px);">
+  <h2 style="margin:0 0 28px;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;font-weight:700;color:#0B0D10;;line-height:1.05">Comprá por tipo de uso</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;">
+    <a href="#catalogo" onClick="{{ navRun }}" style="position:relative;display:block;aspect-ratio:4/5;max-height:620px;width:100%;border-radius:24px;overflow:hidden;background:#E4EAEE;">
+      <div style="position:absolute;inset:0;background:#E4EAEE;"><image-slot id="uso-correr" shape="rect" placeholder="Foto IA realista: corredor en plena zancada en Equipetrol al amanecer, zapatillas negras, ropa técnica oscura, luz lateral cálida"></image-slot></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:28px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;background:linear-gradient(0deg,rgba(11,13,16,0.65),rgba(11,13,16,0));">
+        <div style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:clamp(28px,3cqi,40px);font-weight:700;letter-spacing:-0.03em;color:#FFFFFF;">Para correr</span><span style="font-size:15px;color:#D7DBE0;">Salidas diarias, entrenamientos y carreras</span></div>
+        <span style="width:48px;height:48px;border-radius:50%;background:#D63A5B;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">→</span>
+      </div>
+    </a>
+    <a href="#catalogo" onClick="{{ navDay }}" style="position:relative;display:block;aspect-ratio:4/5;max-height:620px;width:100%;border-radius:24px;overflow:hidden;background:#E4EAEE;">
+      <div style="position:absolute;inset:0;background:#E4EAEE;"><image-slot id="uso-dia" shape="rect" placeholder="Foto IA realista: profesional de 30-40 años caminando en un parque de Santa Cruz, ropa casual, zapatillas blancas, luz de tarde natural"></image-slot></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:28px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;background:linear-gradient(0deg,rgba(11,13,16,0.65),rgba(11,13,16,0));">
+        <div style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:clamp(28px,3cqi,40px);font-weight:700;letter-spacing:-0.03em;color:#FFFFFF;">Para todo el día</span><span style="font-size:15px;color:#D7DBE0;">Trabajo, viajes y caminatas</span></div>
+        <span style="width:48px;height:48px;border-radius:50%;background:#D63A5B;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">→</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="catalogo" data-screen-label="Catálogo" style="min-height:calc(100svh - 60px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;background:#F5F5F7;">
+  <div style="width:100%;box-sizing:border-box;max-width:1280px;margin:0 auto;padding:clamp(48px,6cqi,88px) clamp(20px,4cqi,48px);display:flex;flex-direction:column;gap:28px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <h2 style="margin:0;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;font-weight:700;color:#0B0D10;;line-height:1.05">{{ catalogTitle }}</h2>
+        <span style="font-size:15px;color:#6E6E73;">{{ resultCount }}</span>
+      </div>
+      <span style="font-size:13px;color:#6E6E73;max-width:320px;">Precios en bolivianos. Pagá por QR o transferencia.</span>
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;position:relative;">
+      <sc-if value="{{ anyFilterOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ closeFilters }}" style="position:fixed;inset:0;z-index:14;"></div>
+      </sc-if>
+      <sc-for list="{{ filterGroups }}" as="g" hint-placeholder-count="5">
+        <div style="position:relative;z-index:{{ g.z }};">
+          <button onClick="{{ g.toggle }}" style="height:44px;padding:0 14px 0 18px;border-radius:999px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.fg }};font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;" style-hover="border-color:#0B0D10"><span>{{ g.label }}</span><span style="font-weight:600;">{{ g.current }}</span><span style="font-size:10px;opacity:0.7;">{{ g.caret }}</span></button>
+          <sc-if value="{{ g.isOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:52px;left:0;width:260px;max-width:calc(100cqi - 40px);background:#FFFFFF;border:1px solid #E5E5E5;border-radius:16px;box-shadow:0 16px 40px rgba(11,13,16,0.12);padding:10px;display:flex;flex-direction:column;gap:6px;">
+              <input value="{{ g.query }}" onChange="{{ g.onQuery }}" placeholder="{{ g.ph }}" autoFocus="{{ true }}" style="height:40px;border-radius:10px;border:1px solid #E5E5E5;background:#F5F5F7;padding:0 12px;font-size:14px;outline:none;color:#1D1D1F;">
+              <div style="display:flex;flex-direction:column;max-height:240px;overflow:auto;">
+                <sc-for list="{{ g.shown }}" as="o" hint-placeholder-count="3">
+                  <button onClick="{{ o.onClick }}" style="height:40px;padding:0 10px;border:none;border-radius:8px;background:{{ o.bg }};color:#0B0D10;font-size:14px;font-weight:{{ o.fw }};text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;" style-hover="background:#F5F5F7"><span>{{ o.label }}</span><span style="color:#D63A5B;">{{ o.check }}</span></button>
+                </sc-for>
+                <sc-if value="{{ g.empty }}" hint-placeholder-val="{{ false }}"><span style="padding:10px;font-size:13px;color:#6E6E73;">Sin resultados</span></sc-if>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-for>
+      <sc-if value="{{ anyFilterActive }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ clearFilters }}" style="height:44px;padding:0 14px;border:none;background:transparent;color:#D63A5B;font-size:14px;font-weight:600;cursor:pointer;">Limpiar filtros</button>
+      </sc-if>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px;">
+      <sc-for list="{{ cards }}" as="p" hint-placeholder-count="4">
+        <div onClick="{{ p.onOpen }}" style="background:#FFFFFF;border-radius:20px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px);box-shadow:0 12px 32px rgba(11,13,16,0.08)">
+          <div style="position:relative;aspect-ratio:1;background:#F5F5F7;display:flex;align-items:center;justify-content:center;margin:8px;border-radius:14px;overflow:hidden;">
+            <sc-if value="{{ p.hasImg }}" hint-placeholder-val="{{ false }}">
+              <div role="img" aria-label="{{ p.name }}" style="position:absolute;inset:6%;background-image:{{ p.bg }};background-size:contain;background-position:center;background-repeat:no-repeat;mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.05);"></div>
+            </sc-if>
+            <sc-if value="{{ p.noImg }}" hint-placeholder-val="{{ true }}">
+              <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#F2F2F4 0 10px,#EBEBEE 10px 20px);display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;font-size:12px;color:#6E6E73;">{{ p.phLabel }}</div>
+            </sc-if>
+            <div style="position:absolute;top:12px;left:12px;display:flex;gap:6px;">
+              <sc-if value="{{ p.inStock }}" hint-placeholder-val="{{ true }}">
+                <span style="height:26px;padding:0 10px;border-radius:999px;background:#D63A5B;color:#FFFFFF;font-size:12px;font-weight:600;display:flex;align-items:center;">En stock</span>
+              </sc-if>
+              
+            </div>
+          </div>
+          <div style="padding:6px 20px 20px;display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;gap:6px;align-items:center;">
+              <sc-if value="{{ p.hasPrev }}" hint-placeholder-val="{{ false }}"><button onClick="{{ p.prevThumbs }}" aria-label="Colores anteriores" style="flex-shrink:0;width:24px;height:44px;border:none;border-radius:8px;background:#FFFFFF;color:#0B0D10;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;" style-hover="background:#F5F5F7">‹</button></sc-if>
+              <sc-for list="{{ p.thumbs }}" as="t" hint-placeholder-count="2">
+                <button onClick="{{ t.onClick }}" aria-label="{{ t.name }}" style="position:relative;flex:1 1 0;min-width:0;max-width:52px;height:44px;padding:0;border:none;border-radius:6px;background:#F5F5F7;cursor:pointer;overflow:hidden;">
+                  <sc-if value="{{ t.hasImg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:3px;background-image:{{ t.bg }};background-size:contain;background-position:center;background-repeat:no-repeat;mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.05);"></span></sc-if>
+                  <sc-if value="{{ t.noImg }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:{{ t.hex }};border:1px solid #C9CBCE;"></span></sc-if>
+                  <span style="position:absolute;left:6px;right:6px;bottom:0;height:2px;border-radius:2px;background:{{ t.line }};"></span>
+                </button>
+              </sc-for>
+              <sc-if value="{{ p.hasNext }}" hint-placeholder-val="{{ false }}"><button onClick="{{ p.nextThumbs }}" aria-label="Más colores" style="flex-shrink:0;width:24px;height:44px;border:none;border-radius:8px;background:#FFFFFF;color:#0B0D10;font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;" style-hover="background:#F5F5F7">›</button></sc-if>
+              
+            </div>
+            <sc-if value="{{ p.hasPages }}" hint-placeholder-val="{{ false }}"><span style="margin-top:-4px;font-size:12px;color:#6E6E73;">{{ p.colorCount }}</span></sc-if>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <sc-if value="{{ p.isNew }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#D63A5B;">Nuevo</span></sc-if>
+              <span style="font-size:17px;font-weight:600;letter-spacing:-0.01em;color:#0B0D10;">{{ p.name }}</span>
+              <span style="font-size:14px;color:#44474D;">{{ p.sub }}</span>
+              <span style="font-size:15px;font-weight:500;color:#0B0D10;">{{ p.price }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <span style="font-size:12px;color:#6E6E73;">{{ p.sizesLabel }}</span>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                <sc-for list="{{ p.sizeChips }}" as="z" hint-placeholder-count="4">
+                  <span style="height:26px;min-width:34px;padding:0 7px;border-radius:6px;border:1px solid #E5E5E5;font-size:12px;color:#1D1D1F;display:flex;align-items:center;justify-content:center;">{{ z }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona" data-screen-label="Cómo funciona" style="min-height:calc(100svh - 60px);box-sizing:border-box;justify-content:center;max-width:1280px;margin:0 auto;padding:clamp(56px,8cqi,112px) clamp(20px,4cqi,48px);display:flex;flex-direction:column;gap:40px;">
+  <div style="display:flex;flex-direction:column;gap:12px;max-width:720px;">
+    
+    <h2 style="margin:0;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;line-height:1.05;font-weight:700;color:#0B0D10;text-wrap:balance;">Sin carrito. Sin adivinar la talla.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;">
+    <div style="border:1px solid #E5E5E5;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;">
+      <span style="width:40px;height:40px;border-radius:50%;background:#D63A5B;color:#FFFFFF;font-weight:600;display:flex;align-items:center;justify-content:center;">1</span>
+      <h3 style="margin:0;font-size:24px;letter-spacing:-0.02em;font-weight:600;">Probátelo</h3>
+      <p style="margin:0;font-size:16px;line-height:1.5;color:#6E6E73;">Reservá un fitting en nuestro espacio o pedí que te llevemos 2 tallas a tu casa en Santa Cruz.</p>
+    </div>
+    <div style="border:1px solid #E5E5E5;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;">
+      <span style="width:40px;height:40px;border-radius:50%;background:#D63A5B;color:#FFFFFF;font-weight:600;display:flex;align-items:center;justify-content:center;">2</span>
+      <h3 style="margin:0;font-size:24px;letter-spacing:-0.02em;font-weight:600;">Elegí</h3>
+      <p style="margin:0;font-size:16px;line-height:1.5;color:#6E6E73;">Con tu talla confirmada, elegí el modelo y el color que más te gusten. Te lo llevás el mismo día.</p>
+    </div>
+    <div style="border:1px solid #E5E5E5;border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:14px;">
+      <span style="width:40px;height:40px;border-radius:50%;background:#D63A5B;color:#FFFFFF;font-weight:600;display:flex;align-items:center;justify-content:center;">3</span>
+      <h3 style="margin:0;font-size:24px;letter-spacing:-0.02em;font-weight:600;">Recibilo</h3>
+      <p style="margin:0;font-size:16px;line-height:1.5;color:#6E6E73;">Pagás por QR o transferencia. Delivery en Santa Cruz o retiro en el espacio de fitting.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tallas" data-screen-label="Guía de tallas" style="min-height:calc(100svh - 60px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;max-width:1280px;margin:0 auto;padding:clamp(56px,8cqi,112px) clamp(20px,4cqi,48px);">
+  <div style="border:1px solid #E5E5E5;border-radius:20px;padding:clamp(20px,3cqi,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,3cqi,40px);align-items:center;">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#0B0D10;">Guía de tallas</span>
+      <h2 style="margin:0;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;font-weight:700;color:#0B0D10;;line-height:1.05">¿Qué talla sos?</h2>
+      <p style="margin:0;font-size:15px;line-height:1.5;color:#6E6E73;">Buscá tu talla y mirá la equivalencia. Si tenés dudas, te llevamos 2 tallas a casa.</p>
+      <div style="display:flex;gap:4px;padding:4px;border-radius:999px;background:#FBEAEE;">
+        <sc-for list="{{ sgTabs }}" as="t" hint-placeholder-count="2">
+          <button onClick="{{ t.onClick }}" style="height:36px;padding:0 16px;border-radius:999px;border:none;background:{{ t.bg }};color:{{ t.fg }};font-size:14px;font-weight:500;cursor:pointer;">{{ t.label }}</button>
+        </sc-for>
+      </div>
+      
+    </div>
+    <div style="border-radius:14px;overflow:auto;max-height:340px;background:#FFFFFF;border:1px solid #EFEFF1;">
+      <div style="display:grid;grid-template-columns:repeat(5,minmax(52px,1fr));position:sticky;top:0;background:#F5F5F7;">
+        <span style="padding:10px 6px;text-align:center;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#D63A5B;">BR</span>
+        <span style="padding:10px 6px;text-align:center;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#6E6E73;">EU</span>
+        <span style="padding:10px 6px;text-align:center;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#6E6E73;">UK</span>
+        <span style="padding:10px 6px;text-align:center;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#6E6E73;">US</span>
+        <span style="padding:10px 6px;text-align:center;font-size:12px;font-weight:600;letter-spacing:0.06em;color:#6E6E73;">CM</span>
+      </div>
+      <sc-for list="{{ sgRows }}" as="r" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:repeat(5,minmax(52px,1fr));border-top:1px solid #F0F0F2;" style-hover="background:#FDF1F3">
+          <span style="padding:9px 6px;text-align:center;font-size:14px;font-weight:600;color:#0B0D10;">{{ r.br }}</span>
+          <span style="padding:9px 6px;text-align:center;font-size:14px;color:#44474D;">{{ r.eu }}</span>
+          <span style="padding:9px 6px;text-align:center;font-size:14px;color:#44474D;">{{ r.uk }}</span>
+          <span style="padding:9px 6px;text-align:center;font-size:14px;color:#44474D;">{{ r.us }}</span>
+          <span style="padding:9px 6px;text-align:center;font-size:14px;color:#44474D;">{{ r.cm }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="finder" data-screen-label="Shoe Finder" style="min-height:calc(100svh - 60px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;padding:clamp(56px,8cqi,112px) clamp(20px,4cqi,48px);">
+  <div style="width:100%;box-sizing:border-box;max-width:1280px;margin:0 auto;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:28px;padding:clamp(40px,6cqi,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:32px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:20px;">
+      <span style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D63A5B;">Shoe Finder</span>
+      <h2 style="margin:0;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;line-height:1.05;font-weight:700;color:#0B0D10;text-wrap:balance;">¿No sabés cuál elegir?</h2>
+      <p style="margin:0;font-size:18px;line-height:1.5;color:#6E6E73;max-width:440px;">Respondé 6 preguntas y te recomendamos el par ideal de nuestro catálogo, según cómo corrés.</p>
+      <button onClick="{{ openFinder }}" style="align-self:flex-start;height:52px;padding:0 28px;border-radius:999px;border:none;background:#D63A5B;color:#FFFFFF;font-weight:600;font-size:16px;cursor:pointer;">Empezar el quiz</button>
+      <span style="font-size:13px;color:#6E6E73;">Solo recomendamos modelos que tenemos. Datos de laboratorio: RunRepeat.</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div style="border:1px solid #E5E5E5;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:12px;color:#6E6E73;">01</span><span style="font-size:15px;color:#0B0D10;">¿Para qué lo vas a usar?</span></div>
+      <div style="border:1px solid #E5E5E5;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:12px;color:#6E6E73;">02</span><span style="font-size:15px;color:#0B0D10;">¿Cuántos km por semana?</span></div>
+      <div style="border:1px solid #E5E5E5;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:12px;color:#6E6E73;">03</span><span style="font-size:15px;color:#0B0D10;">¿Qué distancia preparás?</span></div>
+      <div style="border:1px solid #D63A5B;background:#FDF1F3;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px;"><span style="font-size:12px;color:#D63A5B;">04</span><span style="font-size:15px;color:#0B0D10;">¿Suave o reactiva?</span></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Confianza" style="min-height:calc(100svh - 60px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;gap:clamp(32px,4cqi,56px);max-width:1280px;width:100%;margin:0 auto;padding:clamp(56px,8cqi,112px) clamp(20px,4cqi,48px);">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px;align-items:end;">
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <span style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D63A5B;">Por qué con nosotros</span>
+      <h2 style="margin:0;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;line-height:1.05;font-weight:700;color:#0B0D10;text-wrap:balance;">Comprá tranquilo. Corré mejor.</h2>
+    </div>
+    <p style="margin:0;font-size:clamp(17px,1.5cqi,20px);line-height:1.5;color:#44474D;max-width:520px;text-wrap:pretty;">No vendemos zapatillas al azar. Te ayudamos a encontrar el par que va con tu pisada, tus kilómetros y tu día a día.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;">
+      <div style="background:#FFFFFF;border:1px solid #E5E5E5;border-radius:24px;padding:clamp(28px,3.4cqi,44px);display:flex;flex-direction:column;gap:14px;" style-hover="border-color:#D63A5B">
+        <span style="font-size:clamp(40px,4.4cqi,56px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#D63A5B;">01</span>
+        <span style="margin-top:12px;font-size:clamp(20px,1.7cqi,24px);white-space:nowrap;font-weight:600;letter-spacing:-0.02em;color:#0B0D10;">100% original</span>
+        <span style="font-size:16px;line-height:1.5;color:#6E6E73;">Auténticas, nuevas y en su caja.</span>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E5E5E5;border-radius:24px;padding:clamp(28px,3.4cqi,44px);display:flex;flex-direction:column;gap:14px;" style-hover="border-color:#D63A5B">
+        <span style="font-size:clamp(40px,4.4cqi,56px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#D63A5B;">02</span>
+        <span style="margin-top:12px;font-size:clamp(20px,1.7cqi,24px);white-space:nowrap;font-weight:600;letter-spacing:-0.02em;color:#0B0D10;">Probátelas antes</span>
+        <span style="font-size:16px;line-height:1.5;color:#6E6E73;">Vení al fitting o te llevamos 2 tallas a casa.</span>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E5E5E5;border-radius:24px;padding:clamp(28px,3.4cqi,44px);display:flex;flex-direction:column;gap:14px;" style-hover="border-color:#D63A5B">
+        <span style="font-size:clamp(40px,4.4cqi,56px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#D63A5B;">03</span>
+        <span style="margin-top:12px;font-size:clamp(20px,1.7cqi,24px);white-space:nowrap;font-weight:600;letter-spacing:-0.02em;color:#0B0D10;">Asesoría personal</span>
+        <span style="font-size:16px;line-height:1.5;color:#6E6E73;">Te recomendamos según cómo corrés y cómo vivís tu día.</span>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #E5E5E5;border-radius:24px;padding:clamp(28px,3.4cqi,44px);display:flex;flex-direction:column;gap:14px;" style-hover="border-color:#D63A5B">
+        <span style="font-size:clamp(40px,4.4cqi,56px);font-weight:700;letter-spacing:-0.04em;line-height:1;color:#D63A5B;">04</span>
+        <span style="margin-top:12px;font-size:clamp(20px,1.7cqi,24px);white-space:nowrap;font-weight:600;letter-spacing:-0.02em;color:#0B0D10;">Shoe Finder</span>
+        <span style="font-size:16px;line-height:1.5;color:#6E6E73;">6 preguntas y te decimos qué par es para vos.</span>
+      </div>
+  </div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+    <a href="#catalogo" style="height:52px;padding:0 28px;border-radius:999px;background:#0B0D10;color:#FFFFFF;font-weight:600;font-size:16px;display:flex;align-items:center;">Ver catálogo</a>
+    <a href="{{ waGeneral }}" target="_blank" style="height:52px;padding:0 24px;border-radius:999px;border:1px solid #0B0D10;color:#0B0D10;font-weight:500;font-size:16px;display:flex;align-items:center;gap:10px;"><img src="https://cdn.simpleicons.org/whatsapp/0B0D10" alt="" style="width:18px;height:18px;">Hablá con nosotros</a>
+  </div>
+</section>
+
+
+<section data-screen-label="Drops" style="min-height:calc(100svh - 60px);box-sizing:border-box;justify-content:center;max-width:1280px;margin:0 auto;padding:clamp(56px,8cqi,112px) clamp(20px,4cqi,48px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center;">
+  <h2 style="margin:0;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;font-weight:700;color:#0B0D10;;line-height:1.05">Enterate primero de los nuevos modelos.</h2>
+  <p style="margin:0;font-size:17px;color:#6E6E73;">Lanzamientos, colores nuevos y días de prueba. Sin spam.</p>
+  <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;gap:8px;width:100%;max-width:480px;flex-wrap:wrap;">
+      <input value="{{ contact }}" onChange="{{ onContact }}" placeholder="Email o WhatsApp" style="flex:1;min-width:200px;height:52px;border-radius:999px;border:1px solid #DADADA;padding:0 22px;font-size:16px;outline:none;color:#1D1D1F;background:#FFFFFF;">
+      <button onClick="{{ onSubmit }}" style="height:52px;padding:0 26px;border-radius:999px;border:none;background:#D63A5B;color:#FFFFFF;font-size:16px;font-weight:600;cursor:pointer;">Avisame</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+    <div style="height:52px;padding:0 24px;border-radius:999px;background:#E3EAFB;color:#0B0D10;font-size:16px;display:flex;align-items:center;">Listo. Sos de los primeros en enterarte.</div>
+  </sc-if>
+</section>
+
+<footer style="background:#0B0D10;color:#B4B8BE;">
+  <div style="max-width:1280px;margin:0 auto;padding:56px clamp(20px,4cqi,48px) 32px;display:flex;flex-direction:column;gap:40px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:32px;">
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <span style="display:flex;align-items:center;gap:10px;"><img src="brand/dromos-runner-white.svg" alt="" style="height:40px;width:auto;display:block;"><span style="display:flex;flex-direction:column;line-height:1;"><span style="font-weight:800;font-size:28px;letter-spacing:-0.03em;color:#FFFFFF;">{{ brand }}</span><span style="font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#FFFFFF;margin-top:4px;">Built to Run</span></span></span>
+        <span style="font-size:14px;line-height:1.5;">Santa Cruz de la Sierra, Bolivia.</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;"><span style="color:#FFFFFF;font-weight:600;">Comprar</span><a href="#catalogo" style="color:#B4B8BE;">Para correr</a><a href="#catalogo" style="color:#B4B8BE;">Para todo el día</a></div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;"><span style="color:#FFFFFF;font-weight:600;">Servicio</span><a href="#como-funciona" style="color:#B4B8BE;">Fitting</a><a href="#tallas" style="color:#B4B8BE;">Guía de tallas</a><a href="#finder" style="color:#B4B8BE;">Shoe Finder</a></div>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:14px;"><span style="color:#FFFFFF;font-weight:600;">Seguinos</span><div style="display:flex;gap:10px;"><a href="{{ waGeneral }}" target="_blank" aria-label="WhatsApp" style="width:44px;height:44px;border-radius:50%;border:1px solid #2A2F36;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="WhatsApp" style="width:20px;height:20px;"></a><a href="#instagram-pendiente" aria-label="Instagram" style="width:44px;height:44px;border-radius:50%;border:1px solid #2A2F36;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram" style="width:20px;height:20px;"></a><a href="#tiktok-pendiente" aria-label="TikTok" style="width:44px;height:44px;border-radius:50%;border:1px solid #2A2F36;display:flex;align-items:center;justify-content:center;"><img src="https://cdn.simpleicons.org/tiktok/FFFFFF" alt="TikTok" style="width:20px;height:20px;"></a></div></div>
+    </div>
+    <div style="border-top:1px solid #23272D;padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;">
+      <span>Precios en bolivianos. Pago por QR o transferencia.</span>
+      <span>© 2026 {{ brand }}</span>
+    </div>
+  </div>
+</footer>
+
+</div>
+<sc-if value="{{ finderOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:60;background:#FFFFFF;overflow:auto;">
+    <div style="position:sticky;top:0;background:#FFFFFF;z-index:2;">
+      <div style="max-width:720px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <button onClick="{{ fBack }}" style="height:44px;min-width:44px;padding:0 12px;border-radius:999px;border:1px solid #E5E5E5;background:#FFFFFF;color:#0B0D10;font-size:15px;cursor:pointer;">←</button>
+        <span style="font-size:14px;color:#6E6E73;">{{ fStepLabel }}</span>
+        <button onClick="{{ closeFinder }}" style="height:44px;width:44px;border-radius:50%;border:none;background:#F5F5F7;color:#0B0D10;font-size:22px;cursor:pointer;">×</button>
+      </div>
+      <div style="height:3px;background:#F5F5F7;"><div style="height:3px;background:#D63A5B;width:{{ fProgress }};transition:width .3s ease;"></div></div>
+    </div>
+    <div style="max-width:720px;margin:0 auto;padding:clamp(32px,6cqi,72px) 20px 64px;display:flex;flex-direction:column;gap:28px;">
+      <sc-if value="{{ fAsking }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:28px;">
+          <h2 style="margin:0;font-size:clamp(32px,5cqi,52px);letter-spacing:-0.03em;line-height:1.05;font-weight:700;color:#0B0D10;text-wrap:balance;">{{ fq.title }}</h2>
+          <sc-if value="{{ fq.isChoice }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <sc-for list="{{ fq.options }}" as="o" hint-placeholder-count="3">
+                <button onClick="{{ o.onClick }}" style="min-height:64px;padding:16px 22px;border-radius:16px;border:1.5px solid {{ o.border }};background:{{ o.bg }};color:#0B0D10;font-size:18px;font-weight:500;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:4px;" style-hover="border-color:#0B0D10"><span>{{ o.label }}</span><span style="font-size:14px;font-weight:400;color:#6E6E73;">{{ o.sub }}</span></button>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ fq.isSize }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="display:flex;gap:2px;padding:3px;border-radius:999px;background:#F5F5F7;align-self:flex-start;">
+                <sc-for list="{{ unitTabs }}" as="u" hint-placeholder-count="4">
+                  <button onClick="{{ u.onClick }}" style="height:36px;min-width:48px;padding:0 14px;border-radius:999px;border:none;background:{{ u.bg }};color:{{ u.fg }};font-size:14px;font-weight:600;cursor:pointer;">{{ u.label }}</button>
+                </sc-for>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px;">
+                <sc-for list="{{ fq.options }}" as="o" hint-placeholder-count="10">
+                  <button onClick="{{ o.onClick }}" style="height:64px;border-radius:14px;border:1.5px solid {{ o.border }};background:{{ o.bg }};color:#0B0D10;font-size:18px;font-weight:500;cursor:pointer;" style-hover="border-color:#0B0D10">{{ o.label }}</button>
+                </sc-for>
+              </div>
+              <span style="font-size:14px;color:#6E6E73;">¿No sabés tu talla? Elegí la que usás normalmente; en el fitting la confirmamos.</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ fq.isContact }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <input value="{{ fName }}" onChange="{{ onFName }}" placeholder="Tu nombre" style="height:56px;border-radius:14px;border:1px solid #DADADA;padding:0 18px;font-size:17px;outline:none;color:#1D1D1F;">
+              <input value="{{ fPhone }}" onChange="{{ onFPhone }}" placeholder="Tu WhatsApp" inputmode="tel" style="height:56px;border-radius:14px;border:1px solid #DADADA;padding:0 18px;font-size:17px;outline:none;color:#1D1D1F;">
+              <button onClick="{{ fFinish }}" style="height:56px;border-radius:999px;border:none;background:#D63A5B;color:#FFFFFF;font-size:17px;font-weight:600;cursor:pointer;">Ver mi resultado</button>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+      <sc-if value="{{ fDone }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <span style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#D63A5B;">Tu resultado</span>
+            <h2 style="margin:0;font-size:clamp(32px,5cqi,52px);letter-spacing:-0.03em;line-height:1.05;font-weight:700;color:#0B0D10;">{{ fHeadline }}</h2>
+            <p style="margin:0;font-size:16px;line-height:1.5;color:#6E6E73;">{{ fSummary }}</p>
+          </div>
+          <sc-for list="{{ fRecs }}" as="r" hint-placeholder-count="2">
+            <div style="border:1px solid #E5E5E5;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;gap:16px;align-items:center;">
+                <div style="position:relative;width:96px;height:96px;border-radius:16px;background:#F5F5F7;flex-shrink:0;overflow:hidden;">
+                  <sc-if value="{{ r.hasImg }}" hint-placeholder-val="{{ false }}"><div style="position:absolute;inset:6%;background-image:{{ r.bg }};background-size:contain;background-position:center;background-repeat:no-repeat;mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.05);"></div></sc-if>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;flex:1;">
+                  <span style="font-size:13px;font-weight:600;color:#D63A5B;">{{ r.rank }}</span>
+                  <span style="font-size:24px;font-weight:700;letter-spacing:-0.02em;color:#0B0D10;">{{ r.name }}</span>
+                  <span style="font-size:15px;color:#1D1D1F;">{{ r.price }} · {{ r.status }}</span>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <span style="font-size:14px;font-weight:600;color:#0B0D10;">Por qué te lo recomendamos</span>
+                <sc-for list="{{ r.why }}" as="w" hint-placeholder-count="3">
+                  <div style="display:flex;gap:10px;font-size:15px;line-height:1.5;color:#44474D;"><span style="width:6px;height:6px;border-radius:50%;background:#D63A5B;margin-top:9px;flex-shrink:0;"></span><span>{{ w }}</span></div>
+                </sc-for>
+              </div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <a href="{{ r.waHref }}" target="_blank" style="flex:1;min-width:220px;height:52px;border-radius:999px;background:#D63A5B;color:#FFFFFF;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;"><img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="" style="width:20px;height:20px;">Consultar por WhatsApp</a>
+                <a href="{{ r.fitHref }}" target="_blank" style="flex:1;min-width:160px;height:52px;border-radius:999px;border:1px solid #0B0D10;color:#0B0D10;font-weight:500;font-size:16px;display:flex;align-items:center;justify-content:center;">Reservar fitting</a>
+              </div>
+            </div>
+          </sc-for>
+          <span style="font-size:13px;line-height:1.5;color:#6E6E73;">Recomendación basada solo en los modelos de nuestro catálogo. Datos de laboratorio: RunRepeat.</span>
+          <button onClick="{{ fRestart }}" style="align-self:flex-start;height:44px;padding:0 18px;border-radius:999px;border:1px solid #E5E5E5;background:#FFFFFF;color:#0B0D10;font-size:15px;cursor:pointer;">Volver a empezar</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ searchOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;inset:0;z-index:55;background:#FFFFFF;overflow:auto;">
+    <div style="max-width:1120px;margin:0 auto;padding:20px clamp(20px,4cqi,48px) 64px;display:flex;flex-direction:column;gap:32px;">
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div style="flex:1;display:flex;align-items:center;gap:12px;height:56px;padding:0 20px;border-radius:14px;background:#F5F5F7;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6E6E73" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+          <input ref="{{ searchRef }}" value="{{ q }}" onChange="{{ onQ }}" placeholder="Buscá modelo, tipo de pisada o uso" style="flex:1;min-width:0;height:100%;border:none;background:transparent;outline:none;font-size:17px;color:#0B0D10;">
+          <sc-if value="{{ hasQ }}" hint-placeholder-val="{{ false }}"><button onClick="{{ clearQ }}" style="border:none;background:transparent;color:#6E6E73;font-size:14px;cursor:pointer;">Borrar</button></sc-if>
+        </div>
+        <button onClick="{{ closeSearch }}" aria-label="Cerrar" style="width:48px;height:48px;border-radius:50%;border:none;background:#F5F5F7;color:#0B0D10;font-size:22px;cursor:pointer;flex-shrink:0;">×</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <h3 style="margin:0;font-size:22px;letter-spacing:-0.02em;font-weight:700;color:#0B0D10;">Búsquedas sugeridas</h3>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <sc-for list="{{ suggestions }}" as="sg" hint-placeholder-count="6">
+            <button onClick="{{ sg.onClick }}" style="height:40px;padding:0 18px;border-radius:999px;border:1px solid {{ sg.border }};background:{{ sg.bg }};color:{{ sg.fg }};font-size:14px;font-weight:500;cursor:pointer;" style-hover="border-color:#0B0D10">{{ sg.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+          <h3 style="margin:0;font-size:22px;letter-spacing:-0.02em;font-weight:700;color:#0B0D10;">Productos</h3>
+          <span style="font-size:14px;color:#6E6E73;">{{ sCount }}</span>
+        </div>
+        <sc-if value="{{ sEmpty }}" hint-placeholder-val="{{ false }}">
+          <div style="padding:32px;border-radius:16px;background:#F5F5F7;display:flex;flex-direction:column;gap:12px;align-items:flex-start;">
+            <span style="font-size:17px;font-weight:600;color:#0B0D10;">No encontramos "{{ q }}"</span>
+            <span style="font-size:15px;color:#6E6E73;">Probá con Novablast, Nimbus, Cumulus o GT-2000, o escribinos y te ayudamos.</span>
+            <a href="{{ waGeneral }}" target="_blank" style="height:44px;padding:0 20px;border-radius:999px;background:#0B0D10;color:#FFFFFF;font-size:15px;font-weight:600;display:flex;align-items:center;">Hablá con nosotros</a>
+          </div>
+        </sc-if>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:12px;">
+          <sc-for list="{{ sResults }}" as="r" hint-placeholder-count="4">
+            <button onClick="{{ r.onClick }}" style="border:none;background:transparent;padding:0;text-align:left;cursor:pointer;display:flex;flex-direction:column;gap:10px;font-family:inherit;">
+              <div style="position:relative;width:100%;aspect-ratio:1;border-radius:14px;background:#F5F5F7;overflow:hidden;">
+                <sc-if value="{{ r.hasImg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:8%;background-image:{{ r.bg }};background-size:contain;background-position:center;background-repeat:no-repeat;mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.05);"></span></sc-if>
+                <sc-if value="{{ r.noImg }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#F5F5F7 0 10px,#EEEEF0 10px 20px);"></span></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:3px;padding:0 4px;">
+                <span style="font-size:16px;font-weight:600;color:#0B0D10;">{{ r.name }}</span>
+                <span style="font-size:14px;color:#6E6E73;">{{ r.sub }}</span>
+                <span style="font-size:15px;font-weight:600;color:#0B0D10;">{{ r.price }}</span>
+              </div>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ cartOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeCart }}" style="position:fixed;inset:0;z-index:70;background:rgba(11,13,16,0.4);display:flex;justify-content:flex-end;">
+    <div onClick="{{ stop }}" style="width:100%;max-width:440px;height:100%;background:#FFFFFF;display:flex;flex-direction:column;">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid #E5E5E5;">
+        <span style="font-size:22px;font-weight:700;letter-spacing:-0.02em;color:#0B0D10;">Tu carrito <span style="font-weight:500;color:#6E6E73;">{{ cartCountLabel }}</span></span>
+        <button onClick="{{ closeCart }}" aria-label="Cerrar" style="width:44px;height:44px;border-radius:50%;border:none;background:#F5F5F7;color:#0B0D10;font-size:22px;cursor:pointer;">×</button>
+      </div>
+      <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px;text-align:center;">
+          <span style="font-size:18px;font-weight:600;color:#0B0D10;">Tu carrito está vacío</span>
+          <span style="font-size:15px;color:#6E6E73;">Elegí modelo, color y talla, y armá tu pedido.</span>
+          <a href="#catalogo" onClick="{{ closeCart }}" style="height:48px;padding:0 24px;border-radius:999px;background:#0B0D10;color:#FFFFFF;font-size:15px;font-weight:600;display:flex;align-items:center;">Ver catálogo</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hasCart }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1;overflow:auto;padding:8px 24px;display:flex;flex-direction:column;">
+          <sc-for list="{{ cartItems }}" as="ci" hint-placeholder-count="2">
+            <div style="display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #F0F0F2;">
+              <div style="position:relative;width:88px;height:88px;border-radius:12px;background:#F5F5F7;overflow:hidden;flex-shrink:0;">
+                <sc-if value="{{ ci.hasImg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:6%;background-image:{{ ci.bg }};background-size:contain;background-position:center;background-repeat:no-repeat;mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.05);"></span></sc-if>
+              </div>
+              <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;">
+                <div style="display:flex;justify-content:space-between;gap:8px;"><span style="font-size:16px;font-weight:600;color:#0B0D10;">{{ ci.name }}</span><span style="font-size:15px;font-weight:600;color:#0B0D10;white-space:nowrap;">{{ ci.price }}</span></div>
+                <span style="font-size:14px;color:#6E6E73;">{{ ci.meta }}</span>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+                  <div style="display:flex;align-items:center;border:1px solid #E5E5E5;border-radius:999px;height:36px;">
+                    <button onClick="{{ ci.dec }}" aria-label="Menos" style="width:36px;height:34px;border:none;background:transparent;font-size:18px;color:#0B0D10;cursor:pointer;">−</button>
+                    <span style="min-width:20px;text-align:center;font-size:14px;font-weight:600;">{{ ci.qty }}</span>
+                    <button onClick="{{ ci.inc }}" aria-label="Más" style="width:36px;height:34px;border:none;background:transparent;font-size:18px;color:#0B0D10;cursor:pointer;">+</button>
+                  </div>
+                  <button onClick="{{ ci.remove }}" style="border:none;background:transparent;color:#6E6E73;font-size:13px;text-decoration:underline;cursor:pointer;">Quitar</button>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="padding:20px 24px 24px;border-top:1px solid #E5E5E5;display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:16px;color:#0B0D10;">Total</span><span style="font-size:22px;font-weight:700;color:#0B0D10;">{{ cartTotal }}</span></div>
+          <span style="font-size:13px;color:#6E6E73;">Te confirmamos disponibilidad por WhatsApp antes de pagar.</span>
+          <a href="{{ waCartHref }}" target="_blank" style="height:54px;border-radius:999px;background:#D63A5B;color:#FFFFFF;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;"><img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="" style="width:20px;height:20px;">Enviar pedido por WhatsApp</a>
+          <button onClick="{{ closeCart }}" style="height:44px;border:none;background:transparent;color:#0B0D10;font-size:15px;font-weight:500;cursor:pointer;">Seguir mirando</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:50;background:rgba(11,13,16,0.45);display:flex;align-items:flex-end;justify-content:center;padding:clamp(0px,2cqi,24px);">
+    <div onClick="{{ stop }}" style="position:relative;background:#FFFFFF;width:100%;max-width:1080px;max-height:94vh;overflow:auto;border-radius:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));">
+      <button onClick="{{ closeModal }}" style="position:absolute;top:14px;right:14px;z-index:2;width:44px;height:44px;border-radius:50%;border:none;background:#FFFFFF;color:#0B0D10;font-size:22px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.08);">×</button>
+      <div style="background:#F5F5F7;position:relative;min-height:320px;"><div style="position:sticky;top:0;height:min(94vh,620px);min-height:320px;background:#F5F5F7;isolation:isolate;display:flex;align-items:center;justify-content:center;">
+        <sc-if value="{{ m.hasImg }}" hint-placeholder-val="{{ false }}">
+          <div role="img" aria-label="{{ m.name }}" style="position:absolute;inset:5%;background-image:{{ m.bg }};background-size:contain;background-position:center;background-repeat:no-repeat;mix-blend-mode:multiply;filter:brightness(1.08) contrast(1.05);"></div>
+        </sc-if>
+        <sc-if value="{{ m.noImg }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(135deg,#F2F2F4 0 10px,#EBEBEE 10px 20px);display:flex;align-items:center;justify-content:center;font-size:12px;color:#6E6E73;padding:20px;text-align:center;">{{ m.phLabel }}</div>
+        </sc-if>
+      </div></div>
+      <div style="padding:clamp(24px,4cqi,44px);display:flex;flex-direction:column;gap:22px;">
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <span style="font-size:13px;color:#6E6E73;">ASICS · {{ m.feel }}</span>
+          <h3 style="margin:0;font-size:clamp(28px,3cqi,40px);letter-spacing:-0.03em;font-weight:700;color:#0B0D10;">{{ m.name }}</h3>
+          <span style="font-size:22px;font-weight:600;color:#0B0D10;">{{ m.price }}</span>
+          <span style="font-size:13px;color:#6E6E73;">Pagá por QR o transferencia.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <span style="font-size:14px;font-weight:600;">Color · <span style="font-weight:400;color:#6E6E73;">{{ m.colorName }}</span></span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <sc-for list="{{ m.colors }}" as="c" hint-placeholder-count="2">
+              <button onClick="{{ c.onClick }}" aria-label="{{ c.name }}" style="position:relative;width:64px;height:48px;border-radius:10px;border:2px solid {{ c.ring }};background:#F5F5F7;padding:0;cursor:pointer;overflow:hidden;isolation:isolate;">
+                <sc-if value="{{ c.hasImg }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;inset:4px;background-image:{{ c.bg }};background-size:contain;background-position:center;background-repeat:no-repeat;mix-blend-mode:multiply;"></span></sc-if>
+                <sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:50%;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:{{ c.hex }};border:1px solid #C9CBCE;"></span></sc-if>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+            <span style="font-size:14px;font-weight:600;">Talla {{ unitLabel }}</span>
+            <div style="display:flex;gap:2px;padding:3px;border-radius:999px;background:#F5F5F7;">
+              <sc-for list="{{ unitTabs }}" as="u" hint-placeholder-count="4">
+                <button onClick="{{ u.onClick }}" style="height:32px;min-width:44px;padding:0 12px;border-radius:999px;border:none;background:{{ u.bg }};color:{{ u.fg }};font-size:13px;font-weight:600;cursor:pointer;">{{ u.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <span style="font-size:13px;color:#6E6E73;">{{ m.equiv }}</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:8px;">
+            <sc-for list="{{ m.sizes }}" as="s" hint-placeholder-count="10">
+              <sc-if value="{{ s.isSel }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ s.onClick }}" style="height:48px;border-radius:12px;border:1px solid #0B0D10;background:#0B0D10;color:#FFFFFF;font-size:15px;font-weight:600;cursor:pointer;">{{ s.label }}</button>
+              </sc-if>
+              <sc-if value="{{ s.isStock }}" hint-placeholder-val="{{ true }}">
+                <button onClick="{{ s.onClick }}" style="position:relative;height:48px;border-radius:12px;border:1px solid #BFC2C6;background:#FFFFFF;color:#0B0D10;font-size:15px;cursor:pointer;" style-hover="border-color:#0B0D10">{{ s.label }}<span style="position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;background:#D63A5B;"></span></button>
+              </sc-if>
+              <sc-if value="{{ s.isOrder }}" hint-placeholder-val="{{ false }}">
+                <button disabled="{{ true }}" aria-disabled="true" title="No disponible" style="height:48px;border-radius:12px;border:1px solid #EFEFF1;background:#F5F5F7;color:#B8BAC0;font-size:15px;text-decoration:line-through;cursor:not-allowed;">{{ s.label }}</button>
+              </sc-if>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:16px;font-size:12px;color:#6E6E73;flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:6px;"><span style="width:6px;height:6px;border-radius:50%;background:#D63A5B;"></span>En stock</span><span style="display:flex;align-items:center;gap:6px;"><span style="width:10px;height:10px;border-radius:3px;background:#E5E5E7;"></span>No disponible</span></div>
+          <sc-if value="{{ m.statusStock }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:12px 14px;border-radius:12px;background:#FBEAEE;color:#A8263F;font-size:14px;font-weight:500;">En stock – llevalo hoy</div>
+          </sc-if>
+          
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <button onClick="{{ m.addToCart }}" style="height:54px;border-radius:999px;border:none;background:#D63A5B;color:#FFFFFF;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;">Agregar al carrito</button>
+          <sc-if value="{{ m.showAddHint }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px;color:#A8263F;text-align:center;">Elegí una talla disponible para agregarla.</span></sc-if>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <a href="{{ m.waHref }}" target="_blank" style="height:50px;border-radius:999px;border:1px solid #0B0D10;color:#0B0D10;font-weight:500;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;"><img src="https://cdn.simpleicons.org/whatsapp/0B0D10" alt="" style="width:18px;height:18px;">Consultar</a>
+            <a href="{{ m.fitHref }}" target="_blank" style="height:50px;border-radius:999px;border:1px solid #0B0D10;color:#0B0D10;font-weight:500;font-size:15px;display:flex;align-items:center;justify-content:center;">Reservar fitting</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;border-top:1px solid #E5E5E5;padding-top:20px;">
+          <span style="font-size:13px;font-weight:600;color:#D63A5B;text-transform:uppercase;letter-spacing:0.06em;">Se siente como…</span>
+          <p style="margin:0;font-size:17px;line-height:1.5;color:#1D1D1F;">{{ m.feelsLike }}</p>
+          <p style="margin:0;font-size:15px;line-height:1.5;color:#6E6E73;">{{ m.forWho }}</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #E5E5E5;padding-top:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;">
+            <span style="font-size:13px;font-weight:600;color:#D63A5B;text-transform:uppercase;letter-spacing:0.06em;">Laboratorio RunRepeat</span>
+            
+          </div>
+          <p style="margin:0;font-size:15px;line-height:1.5;color:#1D1D1F;">{{ m.highlight }}</p>
+          <p style="margin:0;font-size:14px;line-height:1.5;color:#6E6E73;">A tener en cuenta: {{ m.caveat }}</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+          <sc-for list="{{ m.specs }}" as="sp" hint-placeholder-count="4">
+            <div style="background:#F5F5F7;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;"><span style="font-size:12px;color:#6E6E73;text-transform:uppercase;letter-spacing:0.06em;">{{ sp.k }}</span><span style="font-size:15px;font-weight:600;color:#0B0D10;">{{ sp.v }}</span></div>
+          </sc-for>
+        </div>
+        <a href="{{ m.rrUrl }}" target="_blank" style="font-size:13px;color:#6E6E73;text-decoration:underline;">Fuente: review completa en RunRepeat</a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;brandName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Dromos&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;layout&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Auto&quot;,&quot;Desktop&quot;,&quot;Mobile&quot;],&quot;default&quot;:&quot;Auto&quot;,&quot;tsType&quot;:&quot;'Auto' | 'Desktop' | 'Mobile'&quot;,&quot;section&quot;:&quot;Vista previa&quot;}}">
+const EQUIV = {35:'US 4.5 · EU 37 · 23 cm',36:'US 5.5 · EU 37.5 · 23.5 cm',37:'US 6.5 · EU 38 · 24 cm',38:'US 7.5 · EU 40.5 · 25.5 cm',39:'US 8 · EU 41.5 · 26 cm',40:'US 9 · EU 42.5 · 27 cm',41:'US 9.5 · EU 43.5 · 27.5 cm',42:'US 10.5 · EU 44.5 · 28.25 cm',43:'US 11.5 · EU 46 · 29 cm',44:'US 12 · EU 46.5 · 29.5 cm'};
+const FX = 12;
+const bsOf = usd => Math.round((usd * FX) / 10) * 10;
+const fmtBs = n => `Bs ${String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+const SIZES = [35,36,37,38,39,40,41,42,43,44];
+const UNITS = { BR: 0, EU: 1, UK: 2, US: 3, CM: 4 };
+const SZ = s => { const r = [[34,36,3,4,'22.5'],[35,37,3.5,4.5,'23'],[36,37.5,4,5.5,'23.5'],[37,38,4.5,6.5,'24'],[38,40.5,6.5,7.5,'25.5'],[39,41.5,7,8,'26'],[40,42.5,8,9,'27'],[41,43.5,8.5,9.5,'27.5'],[42,44.5,9.5,10.5,'28.25'],[43,46,10.5,11.5,'29'],[44,46.5,11,12,'29.5'],[45,47,11.5,12.5,'30'],[46,48,12,13,'30.5']].find(x => String(x[0]) === String(s)); return r; };
+const fmtSize = (br, u) => { const r = SZ(br); if (!r) return String(br); const v = r[UNITS[u]]; return u === 'CM' ? v + ' cm' : String(v); };
+const SG = {
+  M: [[34,36,3,4,'22.5'],[35,37,3.5,4.5,'23'],[36,37.5,4,5.5,'23.5'],[37,38,4.5,6.5,'24'],[38,40.5,6.5,7.5,'25.5'],[39,41.5,7,8,'26'],[40,42.5,8,9,'27'],[41,43.5,8.5,9.5,'27.5'],[42,44.5,9.5,10.5,'28.25'],[43,46,10.5,11.5,'29.0'],[44,46.5,11,12,'29.5'],[45,47,11.5,12.5,'30'],[46,48,12,13,'30.5']],
+  F: [[34,36,3.5,5.5,'22.75'],[35,37.5,4.5,6.5,'23.5'],[36,38,5,7,'24'],[37,39,5.5,7.5,'24.5'],[38,40,6.5,8.5,'25.5'],[39,40.5,7,9,'25.75'],[40,42,8,10,'26.5']]
+};
+const QS = [
+  { key: 'uso', title: '¿Para qué lo vas a usar?', opts: [['correr','Correr','Entrenar y carreras'],['dia','Todo el día','Trabajo, viajes, caminar'],['ambos','Ambos','Correr y usar a diario']] },
+  { key: 'km', title: '¿Cuántos km corrés por semana?', opts: [['low','0–10 km','Recién empiezo o corro poco'],['mid','10–30 km','Corro varias veces por semana'],['high','30+ km','Entreno en serio']] },
+  { key: 'dist', title: '¿Qué distancia estás preparando?', opts: [['5k','5K',''],['10k','10K',''],['21k','21K','Media maratón'],['42k','42K','Maratón'],['none','Ninguna','Corro por salud y placer']] },
+  { key: 'feel', title: '¿Qué sensación preferís?', opts: [['suave','Suave y amortiguada','Protección máxima en cada paso'],['reactiva','Reactiva y liviana','Rebote para apurar el ritmo'],['estable','Estable','Mi pie tiende a caer hacia adentro']] },
+  { key: 'size', title: '¿Tu talla habitual?', size: true },
+  { key: 'contact', title: '¿Cómo te contactamos?', contact: true },
+];
+const PTS = {
+  uso: { correr: {'novablast-6':2,'novablast-5':2,'gt-2000-14':1,'gel-cumulus-28':1,'gel-nimbus-28':1}, dia: {'gel-nimbus-28':3,'gel-nimbus-27':3,'gel-cumulus-28':2,'gel-cumulus-27':2,'gt-2000-14':1}, ambos: {'gel-nimbus-28':2,'gel-cumulus-28':2,'novablast-6':1,'gel-nimbus-27':1} },
+  km: { low: {'gel-cumulus-28':2,'gel-cumulus-27':2,'gt-2000-13':1}, mid: {'novablast-6':2,'gel-cumulus-28':1,'gel-nimbus-28':1,'novablast-5':1}, high: {'novablast-6':2,'gel-nimbus-28':2,'gel-nimbus-27':1} },
+  dist: { '5k': {'novablast-5':2,'novablast-6':1,'gel-cumulus-28':1}, '10k': {'novablast-6':2,'novablast-5':1,'gel-cumulus-28':1}, '21k': {'novablast-6':2,'gel-nimbus-28':1,'novablast-5':1}, '42k': {'gel-nimbus-28':2,'novablast-6':2}, none: {'gel-cumulus-27':1,'gel-nimbus-27':1,'gel-nimbus-28':1} },
+  feel: { suave: {'gel-nimbus-28':3,'gel-nimbus-27':2,'gel-cumulus-28':2,'gel-cumulus-27':1}, reactiva: {'novablast-6':3,'novablast-5':2}, estable: {'gt-2000-14':5,'gt-2000-13':4} },
+};
+const WHY = {
+  uso: { correr: 'Lo querés para correr', dia: 'Lo vas a usar todo el día', ambos: 'Lo querés para correr y para el día a día' },
+  feel: { suave: 'Preferís una pisada suave y amortiguada', reactiva: 'Buscás una sensación reactiva y liviana', estable: 'Necesitás estabilidad en la pisada' },
+  dist: { '5k': 'Estás preparando un 5K', '10k': 'Estás preparando un 10K', '21k': 'Estás preparando un 21K', '42k': 'Estás preparando un 42K' },
+};
+
+class Component extends DCLogic {
+  state = { inv: [], f: { use: 'all', model: 'all', avail: 'all', color: 'all', gender: 'all' }, openId: null, ci: 0, size: null, ok: {}, contact: '', sent: false,
+    unit: 'EU', fOpen: false, fStep: 0, fa: {}, fName: '', fPhone: '', sg: 'M', showMeasure: false };
+
+  rootRef = React.createRef();
+  searchRef = React.createRef();
+  saveCart(cart) { this.setState({ cart }); try { localStorage.setItem('dromos-cart', JSON.stringify(cart)); } catch (e) {} }
+  componentDidMount() {
+    try { const c = JSON.parse(localStorage.getItem('dromos-cart') || '[]'); if (Array.isArray(c)) this.setState({ cart: c }); } catch (e) {}
+    this._esc = e => { if (e.key === 'Escape') this.setState({ searchOpen: false, cartOpen: false }); };
+    window.addEventListener('keydown', this._esc);
+    const el = this.rootRef.current;
+    if (el && window.ResizeObserver) {
+      this._ro = new ResizeObserver(([e]) => { const w = e.contentRect.width; if ((w < 760) !== !!this.state.narrow) this.setState({ narrow: w < 760, menuOpen: false }); });
+      this._ro.observe(el);
+    }
+    const watch = () => {
+      const el = document.getElementById('hero-runner');
+      if (!el) return setTimeout(watch, 300);
+      const upd = () => this.setState({ heroFilled: el.hasAttribute('data-filled') });
+      upd();
+      this._heroObs = new MutationObserver(upd);
+      this._heroObs.observe(el, { attributes: true, attributeFilter: ['data-filled'] });
+    };
+    watch();
+    fetch('inventory.json').then(r => r.json()).then(d => {
+      const inv = (d.products || []).map(p => ({ ...p, colors: (d.colors && d.colors[p.id]) || p.colors || [] }));
+      this.setState({ inv });
+      inv.forEach(p => p.colors.forEach(c => {
+        if (!c.image) return;
+        const im = new Image();
+        im.onload = () => this.setState(s => ({ ok: { ...s.ok, [c.image]: true } }));
+        im.src = c.image;
+      }));
+    }).catch(() => {});
+  }
+  okImg(url) { return !!url && !!this.state.ok[url]; }
+  wa(text) {
+    const n = String(this.props.whatsappNumber ?? '').replace(/\D/g, '');
+    return `https://wa.me/${n}?text=${encodeURIComponent(text)}`;
+  }
+  setF(k, v) { this.setState(s => ({ f: { ...s.f, [k]: v } })); }
+  stockOf(c) { return Object.keys(c.sizes || {}).filter(k => c.sizes[k] === 'stock'); }
+  bestImg(p) { const c = p.colors.find(x => this.okImg(x.image)); return c ? c.image : null; }
+
+  recommend(brand) {
+    const { inv, fa } = this.state;
+    const score = {};
+    inv.forEach(p => { score[p.id] = 0; });
+    Object.keys(PTS).forEach(k => { const m = PTS[k][fa[k]] || {}; Object.keys(m).forEach(id => { if (id in score) score[id] += m[id]; }); });
+    const ranked = inv.slice().sort((a, b) => (score[b.id] - score[a.id]) || ((b.rr?.score || 0) - (a.rr?.score || 0)) || (b.gen - a.gen));
+    const picks = [];
+    for (const p of ranked) { if (picks.length < 2 && !picks.some(x => x.family === p.family)) picks.push(p); }
+    const sz = fa.size;
+    return picks.map((p, i) => {
+      const stockColor = sz ? p.colors.find(c => (c.sizes || {})[sz] === 'stock') : null;
+      const status = sz ? (stockColor ? `En stock en EU ${fmtSize(sz,'EU')} (${stockColor.name.toLowerCase()})` : `Sin stock en EU ${fmtSize(sz,'EU')}, consultanos`) : 'Consultá disponibilidad';
+      const why = [];
+      if (fa.feel && WHY.feel[fa.feel] && ((fa.feel === p.type) || (fa.feel === 'suave' && p.type === 'suave'))) why.push(`${WHY.feel[fa.feel]}: ${p.feelsLike}`);
+      else why.push(p.feelsLike);
+      if (p.rr?.highlight) why.push(`RunRepeat: ${p.rr.highlight}`);
+      const dataBits = [p.rr?.drop && `diferencia talón–punta ${p.rr.drop}`, p.rr?.weight && `peso ${p.rr.weight}`, p.rr?.score && `puntaje ${p.rr.score}/100`].filter(Boolean);
+      if (dataBits.length) why.push(`Laboratorio: ${dataBits.join(' · ')}.`);
+      if (p.rr?.caveat) why.push(`A tener en cuenta: ${p.rr.caveat}`);
+      const img = this.bestImg(p);
+      const who = this.state.fName ? ` Soy ${this.state.fName}.` : '';
+      return {
+        rank: i === 0 ? 'Tu mejor opción' : 'Alternativa', name: p.name, price: fmtBs(bsOf(p.priceUSD)), status, why,
+        hasImg: !!img, bg: `url("${img}")`,
+        waHref: this.wa(`Hola ${brand}!${who} Hice el Shoe Finder y me recomendó el ASICS ${p.name}${sz ? `, talla EU ${fmtSize(sz,'EU')} (BR ${sz})` : ''}. ¿Me confirman disponibilidad?`),
+        fitHref: this.wa(`Hola ${brand}!${who} Quiero reservar un fitting para probarme el ASICS ${p.name}${sz ? ` en talla EU ${fmtSize(sz,'EU')}` : ''}.`),
+      };
+    });
+  }
+
+  renderVals() {
+    const brand = this.props.brandName || 'Dromos';
+    const { inv, f } = this.state;
+    const groups = [
+      { key: 'gender', label: 'Género', opts: [['all','Todos'],['M','Masculino'],['F','Femenino']] },
+      { key: 'avail', label: 'Disponible', opts: [['all','Todo'],['stock','En stock']] },
+      { key: 'use', label: 'Uso', opts: [['all','Todos'],['correr','Para correr'],['todo-el-dia','Todo el día']] },
+      { key: 'model', label: 'Modelo', opts: [['all','Todos'],['Novablast','Novablast'],['GEL-Nimbus','GEL-Nimbus'],['GEL-Cumulus','GEL-Cumulus'],['GT-2000','GT-2000'],['Superblast','Superblast'],['Sonicblast','Sonicblast']] },
+      { key: 'color', label: 'Color', opts: [['all','Todos'],['Negro','Negro'],['Blanco','Blanco']] },
+    ];
+    const fo = this.state.fOpenKey, fq0 = (this.state.fQuery || '').toLowerCase();
+    const filterGroups = groups.map(g => {
+      const isOpen = fo === g.key, active = f[g.key] !== 'all';
+      const cur = (g.opts.find(o => o[0] === f[g.key]) || g.opts[0])[1];
+      const shown = g.opts.filter(([v, l]) => !isOpen || !fq0 || l.toLowerCase().includes(fq0)).map(([v, l]) => ({ label: l, check: f[g.key] === v ? '✓' : '', bg: f[g.key] === v ? '#FDF1F3' : 'transparent', fw: f[g.key] === v ? 600 : 400, onClick: () => { this.setF(g.key, v); this.setState({ fOpenKey: null, fQuery: '' }); } }));
+      return { label: g.label, current: active ? cur : '', caret: isOpen ? '▲' : '▼', isOpen, z: isOpen ? 16 : 1,
+        border: active || isOpen ? '#0B0D10' : '#DADADA', bg: active ? '#0B0D10' : '#FFFFFF', fg: active ? '#FFFFFF' : '#1D1D1F',
+        ph: `Buscar ${g.label.toLowerCase()}…`, query: isOpen ? this.state.fQuery || '' : '', onQuery: e => this.setState({ fQuery: e.target.value }),
+        toggle: () => this.setState(s => ({ fOpenKey: s.fOpenKey === g.key ? null : g.key, fQuery: '' })), shown, empty: shown.length === 0 };
+    });
+
+    const list = inv.filter(p => {
+      if (f.use !== 'all' && !(p.uses || []).includes(f.use)) return false;
+      if (f.model !== 'all' && p.family !== f.model) return false;
+      if (f.gender !== 'all' && !(p.genders || ['M','F']).includes(f.gender)) return false;
+      const cols = f.color === 'all' ? p.colors : p.colors.filter(c => c.name === f.color);
+      if (!cols.length) return false;
+      if (f.avail === 'stock' && !cols.some(c => this.stockOf(c).length)) return false;
+      return true;
+    });
+
+    const cards = list.map(p => {
+      const picked = (this.state.cardColor || {})[p.id];
+      const ci = picked != null ? picked : (f.color === 'all' ? 0 : p.colors.findIndex(c => c.name === f.color));
+      const c = p.colors[ci];
+      const inStockHere = this.stockOf(c).sort((a, b) => a - b);
+      const stockAll = [...new Set(p.colors.flatMap(x => this.stockOf(x)))].sort();
+      const hasImg = this.okImg(c.image);
+      return {
+        name: p.name, price: fmtBs(bsOf(p.priceUSD)), feel: p.feel, bg: `url("${c.image}")`, hasImg, noImg: !hasImg,
+        phLabel: `foto producto · ${p.name} ${c.name.toLowerCase()}`,
+        inStock: stockAll.length > 0, onlyOrder: stockAll.length === 0, isNew: p.badge === 'Nuevo',
+        stockLine: stockAll.length ? `Hoy: ${stockAll.join(' · ')}` : 'Consultá disponibilidad',
+        dots: p.colors.map(x => ({ hex: x.hex })),
+        sub: `${(p.uses || []).includes('todo-el-dia') ? 'Running y uso diario' : 'Running'} · ${p.feel}`,
+        ...(() => { const per = 4, n = p.colors.length, pages = Math.ceil(n / per); const pg = Math.min((this.state.tp || {})[p.id] || 0, pages - 1); const go = d => e => { e.stopPropagation(); this.setState(s => ({ tp: { ...(s.tp || {}), [p.id]: Math.max(0, Math.min(pages - 1, pg + d)) } })); };
+          return { hasPrev: pg > 0, hasNext: pg < pages - 1, hasPages: pages > 1, colorCount: `${n} colores`, prevThumbs: go(-1), nextThumbs: go(1), _pg: pg * per }; })(),
+        thumbs: p.colors.map((x, i) => { const ok = this.okImg(x.image); return { name: x.name, hex: x.hex, hasImg: ok, noImg: !ok, bg: `url("${(x.image || '').replace('nw=1000', 'nw=180')}")`, line: i === ci ? '#0B0D10' : 'transparent', onClick: e => { e.stopPropagation(); this.setState(s => ({ cardColor: { ...(s.cardColor || {}), [p.id]: i } })); } }; }).slice(Math.min((this.state.tp || {})[p.id] || 0, Math.ceil(p.colors.length / 4) - 1) * 4).slice(0, 4),
+        sizesLabel: inStockHere.length ? `Tallas disponibles (EU) · ${c.name}` : `Consultanos tallas en ${c.name.toLowerCase()}`,
+        sizeChips: inStockHere.map(s => fmtSize(s, 'EU')),
+        onOpen: () => this.setState({ openId: p.id, ci: Math.max(ci, 0), size: null }),
+      };
+    });
+
+    const catalogTitle = f.use === 'todo-el-dia' ? 'Para todo el día' : f.use === 'correr' ? 'Para correr' : 'Todos los modelos';
+    const resultCount = inv.length ? `${cards.length} ${cards.length === 1 ? 'modelo' : 'modelos'}` : 'Cargando inventario…';
+
+    let m = {};
+    const op = inv.find(p => p.id === this.state.openId);
+    if (op) {
+      const c = op.colors[this.state.ci] || op.colors[0];
+      const hasImg = this.okImg(c.image);
+      const sz = this.state.size;
+      const st = sz ? (c.sizes[sz] || 'encargo') : null;
+      const rr = op.rr || {};
+      const specs = [['Diferencia talón–punta', rr.drop], ['Altura talón / punta', rr.stack], ['Peso', rr.weight], ['Acolchado', rr.sa], ['Rebote', rr.er], ['Horma', rr.fit]].filter(x => x[1]).map(([k, v]) => ({ k, v }));
+      m = {
+        name: op.name, feel: op.feel, price: fmtBs(bsOf(op.priceUSD)), bg: `url("${c.image}")`, hasImg, noImg: !hasImg,
+        phLabel: `foto producto · ${op.name} ${c.name.toLowerCase()} · vista lateral`,
+        colorName: c.name,
+        colors: op.colors.map((x, i) => ({ name: x.name, hex: x.hex, hasImg: this.okImg(x.image), noImg: !this.okImg(x.image), bg: `url("${(x.image || '').replace('nw=1000', 'nw=180')}")`, ring: i === this.state.ci ? '#0B0D10' : 'transparent', onClick: () => this.setState({ ci: i, size: null }) })),
+        sizes: SIZES.map(n => { const s = String(n), stock = c.sizes[s] === 'stock', sel = sz === s; return { label: fmtSize(s, this.state.unit).replace(' cm',''), isSel: sel, isStock: !sel && stock, isOrder: !sel && !stock, onClick: () => stock && this.setState({ size: s, addHint: false }) }; }),
+        equiv: sz ? ['EU','BR','US','CM'].filter(u => u !== this.state.unit).map(u => `${u === 'CM' ? '' : u + ' '}${fmtSize(sz, u)}`).join(' · ') : 'Tocá una talla para ver sus equivalencias',
+        statusStock: st === 'stock', statusOrder: st === 'encargo',
+        showAddHint: !!this.state.addHint,
+        addToCart: () => {
+          if (!sz) return this.setState({ addHint: true });
+          const key = `${op.id}|${this.state.ci}|${sz}`; const cart = [...(this.state.cart || [])];
+          const ex = cart.find(x => x.key === key);
+          if (ex) ex.qty += 1; else cart.push({ key, id: op.id, ci: this.state.ci, size: sz, qty: 1 });
+          this.saveCart(cart); this.setState({ openId: null, cartOpen: true, addHint: false });
+        },
+        waHref: this.wa(`Hola ${brand}! Me interesa el ASICS ${op.name}, color ${c.name}, ${sz ? `talla EU ${fmtSize(sz,'EU')} (BR ${sz} · US ${fmtSize(sz,'US')})` : 'talla (a definir)'}${st === 'stock' ? ' (en stock)' : ''}. ¿Me confirman disponibilidad?`),
+        fitHref: this.wa(`Hola ${brand}! Quiero reservar un fitting para probarme el ASICS ${op.name} (${c.name}).`),
+        feelsLike: op.feelsLike, forWho: op.forWho, specs,
+        hasScore: !!rr.score, score: rr.score, highlight: rr.highlight || '', caveat: rr.caveat || '', rrUrl: rr.url || 'https://runrepeat.com',
+      };
+    }
+
+    // Shoe finder
+    const { fStep, fa } = this.state;
+    const done = fStep >= QS.length;
+    const q = QS[Math.min(fStep, QS.length - 1)];
+    const next = (k, v) => this.setState(s => ({ fa: { ...s.fa, [k]: v }, fStep: s.fStep + 1 }));
+    const optStyle = sel => ({ border: sel ? '#D63A5B' : '#E5E5E5', bg: sel ? '#FDF1F3' : '#FFFFFF' });
+    const fq = {
+      title: q.title, isChoice: !q.size && !q.contact, isSize: !!q.size, isContact: !!q.contact,
+      options: q.size
+        ? SIZES.map(n => ({ label: fmtSize(n, this.state.unit), ...optStyle(fa.size === String(n)), onClick: () => next('size', String(n)) }))
+        : (q.opts || []).map(([v, l, sub]) => ({ label: l, sub, ...optStyle(fa[q.key] === v), onClick: () => next(q.key, v) })),
+    };
+    const recs = done ? this.recommend(brand) : [];
+    const sumBits = [WHY.uso[fa.uso], WHY.feel[fa.feel], WHY.dist[fa.dist], fa.size && `talla EU ${fmtSize(fa.size,'EU')}`].filter(Boolean);
+
+    const sgRows = SG[this.state.sg].map((r, i) => ({ br: r[0], eu: r[1], uk: r[2], us: r[3], cm: r[4], bg: '' }));
+    const sgTabs = [['M','Masculino'],['F','Femenino']].map(([k, l]) => ({ label: l, bg: this.state.sg === k ? '#D63A5B' : 'transparent', fg: this.state.sg === k ? '#FFFFFF' : '#6E6E73', onClick: () => this.setState({ sg: k }) }));
+
+    return {
+      heroOverlay: this.state.heroFilled ? 1 : 0, heroSlotLeft: '0', heroNote: this.state.heroFilled ? 0 : 1,
+      heroInk: this.state.heroFilled ? '#FFFFFF' : '#0B0D10', heroSub: this.state.heroFilled ? '#E4E7EB' : '#44474D',
+      heroBtnBg: this.state.heroFilled ? '#FFFFFF' : '#0B0D10', heroBtnFg: this.state.heroFilled ? '#0B0D10' : '#FFFFFF',
+      unitLabel: this.state.unit === 'CM' ? 'en cm' : this.state.unit,
+      unitTabs: ['EU','BR','US','CM'].map(u => ({ label: u, bg: this.state.unit === u ? '#FFFFFF' : 'transparent', fg: this.state.unit === u ? '#0B0D10' : '#6E6E73', onClick: () => this.setState({ unit: u }) })),
+      frameW: this.props.layout === 'Mobile' ? '390px' : this.props.layout === 'Desktop' ? '1440px' : 'none',
+      stageBg: this.props.layout === 'Mobile' || this.props.layout === 'Desktop' ? '#E5E5EA' : '#FFFFFF',
+      frameShadow: this.props.layout === 'Mobile' || this.props.layout === 'Desktop' ? '0 20px 60px rgba(11,13,16,0.15)' : 'none',
+      rootRef: this.rootRef, isNarrow: !!this.state.narrow, isWide: !this.state.narrow,
+      menuOpen: !!this.state.menuOpen && !!this.state.narrow, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
+      navRunM: () => { this.setF('use', 'correr'); this.setState({ menuOpen: false }); }, navDayM: () => { this.setF('use', 'todo-el-dia'); this.setState({ menuOpen: false }); },
+      heroAlign: this.state.narrow ? 'flex-end' : 'center',
+      heroSlotBottom: this.state.narrow && !this.state.heroFilled ? '55%' : '0',
+      heroNoteDisplay: this.state.narrow ? 'none' : 'block',
+      heroPad: this.state.narrow ? '32px 20px 40px' : 'clamp(96px,12cqi,160px) clamp(20px,4cqi,48px)',
+      heroGrad: this.state.narrow ? 'linear-gradient(0deg,rgba(11,13,16,0.75) 0%,rgba(11,13,16,0.3) 50%,rgba(11,13,16,0) 75%)' : 'linear-gradient(90deg,rgba(11,13,16,0.62) 0%,rgba(11,13,16,0.2) 45%,rgba(11,13,16,0) 65%)',
+      ...(() => {
+        const cart = (this.state.cart || []).map(it => { const p = inv.find(x => x.id === it.id); if (!p) return null; const c = p.colors[it.ci] || p.colors[0]; return { it, p, c }; }).filter(Boolean);
+        const setQty = (key, d) => this.saveCart((this.state.cart || []).map(x => x.key === key ? { ...x, qty: x.qty + d } : x).filter(x => x.qty > 0));
+        const count = cart.reduce((a, x) => a + x.it.qty, 0);
+        const total = cart.reduce((a, x) => a + x.it.qty * bsOf(x.p.priceUSD), 0);
+        const lines = cart.map((x, i) => `${i + 1}. ASICS ${x.p.name} · ${x.c.name} · EU ${fmtSize(x.it.size, 'EU')} (BR ${x.it.size}) · x${x.it.qty} · ${fmtBs(bsOf(x.p.priceUSD) * x.it.qty)}`);
+        const q = (this.state.q || '').trim().toLowerCase();
+        const res = inv.filter(p => !q || [p.name, p.family, p.feel, p.forWho, ...(p.uses || []).map(u => u === 'todo-el-dia' ? 'todo el día diario caminar' : 'correr running'), p.feel === 'Estable' ? 'estabilidad pronador pronación soporte' : ''].join(' ').toLowerCase().includes(q));
+        const SUG = ['Novablast', 'GEL-Nimbus', 'GEL-Cumulus', 'GT-2000', 'Superblast', 'Sonicblast', 'Estabilidad', 'Suave', 'Reactiva', 'Todo el día'];
+        return {
+          searchRef: this.searchRef, searchOpen: !!this.state.searchOpen, q: this.state.q || '', hasQ: !!q,
+          openSearch: () => { this.setState({ searchOpen: true, menuOpen: false }); setTimeout(() => this.searchRef.current && this.searchRef.current.focus(), 50); },
+          closeSearch: () => this.setState({ searchOpen: false }), onQ: e => this.setState({ q: e.target.value }), clearQ: () => this.setState({ q: '' }),
+          suggestions: SUG.map(s => { const on = q === s.toLowerCase(); return { label: s, bg: on ? '#0B0D10' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0B0D10', border: on ? '#0B0D10' : '#DADADA', onClick: () => this.setState({ q: on ? '' : s }) }; }),
+          sResults: res.map(p => { const c = p.colors.find(x => this.okImg(x.image)) || p.colors[0]; const ok = this.okImg(c.image); const ci = p.colors.indexOf(c);
+            return { name: p.name, sub: `${(p.uses || []).includes('todo-el-dia') ? 'Running y uso diario' : 'Running'} · ${p.feel}`, price: fmtBs(bsOf(p.priceUSD)), hasImg: ok, noImg: !ok, bg: `url("${c.image}")`, onClick: () => this.setState({ searchOpen: false, openId: p.id, ci, size: null, addHint: false }) }; }),
+          sCount: `${res.length} ${res.length === 1 ? 'resultado' : 'resultados'}`, sEmpty: inv.length > 0 && res.length === 0,
+          cartOpen: !!this.state.cartOpen, openCart: () => this.setState({ cartOpen: true, menuOpen: false }), closeCart: () => this.setState({ cartOpen: false }),
+          hasCart: count > 0, cartEmpty: count === 0, cartCount: String(count), cartCountLabel: count ? `(${count})` : '',
+          cartTotal: fmtBs(total),
+          cartItems: cart.map(x => { const ok = this.okImg(x.c.image); return { name: x.p.name, meta: `${x.c.name} · Talla EU ${fmtSize(x.it.size, 'EU')}`, price: fmtBs(bsOf(x.p.priceUSD) * x.it.qty), qty: String(x.it.qty), hasImg: ok, bg: `url("${x.c.image}")`, inc: () => setQty(x.it.key, 1), dec: () => setQty(x.it.key, -1), remove: () => setQty(x.it.key, -999) }; }),
+          waCartHref: this.wa(`Hola ${brand}! Quiero hacer este pedido:\n\n${lines.join('\n')}\n\nTotal: ${fmtBs(total)}\n¿Me confirman disponibilidad?`),
+        };
+      })(),
+      brand, showTopBar: this.props.showTopBar ?? true,
+      navRun: () => this.setF('use', 'correr'), navDay: () => this.setF('use', 'todo-el-dia'),
+      waGeneral: this.wa(`Hola ${brand}! Quiero ayuda para elegir mi par.`),
+      waSizes: this.wa(`Hola ${brand}! Tengo dudas con mi talla, ¿me pueden llevar 2 tallas para probarme?`),
+      filterGroups, cards,
+      anyFilterOpen: !!this.state.fOpenKey, closeFilters: () => this.setState({ fOpenKey: null, fQuery: '' }),
+      anyFilterActive: Object.values(f).some(v => v !== 'all'),
+      clearFilters: () => this.setState({ f: { use: 'all', model: 'all', avail: 'all', color: 'all', gender: 'all' }, cardColor: {} }), catalogTitle, resultCount,
+      modalOpen: !!op, m,
+      closeModal: () => this.setState({ openId: null }), stop: e => e.stopPropagation(),
+      contact: this.state.contact, onContact: e => this.setState({ contact: e.target.value }),
+      onSubmit: () => this.state.contact.trim() && this.setState({ sent: true }),
+      sent: this.state.sent, notSent: !this.state.sent,
+      finderOpen: this.state.fOpen,
+      openFinder: () => this.setState({ fOpen: true, fStep: 0, fa: {} }),
+      closeFinder: () => this.setState({ fOpen: false }),
+      fBack: () => this.setState(s => s.fStep > 0 ? { fStep: s.fStep - 1 } : { fOpen: false }),
+      fRestart: () => this.setState({ fStep: 0, fa: {} }),
+      fStepLabel: done ? 'Resultado' : `Pregunta ${fStep + 1} de ${QS.length}`,
+      fProgress: `${Math.round((Math.min(fStep, QS.length) / QS.length) * 100)}%`,
+      fAsking: !done, fDone: done, fq,
+      fName: this.state.fName, fPhone: this.state.fPhone,
+      onFName: e => this.setState({ fName: e.target.value }), onFPhone: e => this.setState({ fPhone: e.target.value }),
+      fFinish: () => this.setState({ fStep: QS.length }),
+      fHeadline: recs[0] ? recs[0].name : 'Hablemos',
+      fSummary: sumBits.length ? `${sumBits.join(' · ')}.` : '',
+      fRecs: recs,
+      sgTitle: this.state.sg === 'M' ? 'Masculino' : 'Femenino', sgTabs, sgRows,
+      showMeasure: this.state.showMeasure, measureArrow: this.state.showMeasure ? '↑' : '↓', toggleMeasure: () => this.setState(s => ({ showMeasure: !s.showMeasure })),
+    };
+  }
+}
+</script>
+</body>
+</html>
