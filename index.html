@@ -17,7 +17,7 @@ a{color:#1D1D1F;text-decoration:none}
 a:hover{color:#D63A5B}
 input,button{font-family:inherit}
 </style>
-<script src="./image-slot.js"></script>
+
 </helmet>
 
 <div style="min-height:100vh;background:{{ stageBg }};">
@@ -65,7 +65,7 @@ input,button{font-family:inherit}
 
 <section id="top" data-screen-label="Hero" style="position:relative;min-height:calc(100svh - 60px);display:flex;align-items:{{ heroAlign }};justify-content:center;overflow:hidden;background:#FFFFFF;">
   <div style="position:absolute;top:0;bottom:{{ heroSlotBottom }};right:0;left:{{ heroSlotLeft }};background:#FFFFFF;">
-    <image-slot id="hero-runner" src="hero-runner.jpg" shape="rect" placeholder="Foto hero"></image-slot>
+    <img id="hero-runner" src="hero-runner.jpg" alt="Corredor entrenando al amanecer en una avenida arbolada de Santa Cruz" loading="eager" fetchpriority="high" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% center;display:block;">
   </div>
   <div style="position:absolute;inset:0;pointer-events:none;opacity:{{ heroOverlay }};transition:opacity .3s ease;background:{{ heroGrad }};"></div>
   <span style="position:absolute;top:16px;right:16px;max-width:320px;pointer-events:none;font-size:12px;line-height:1.4;color:#6E6E73;display:{{ heroNoteDisplay }};opacity:{{ heroNote }};text-align:right;">Foto IA realista: corredor/a al amanecer en una avenida arbolada de Santa Cruz, zapatillas negras o blancas, luz dorada natural.</span>
@@ -85,14 +85,14 @@ input,button{font-family:inherit}
   <h2 style="margin:0 0 28px;font-size:clamp(34px,5.4cqi,64px);letter-spacing:-0.035em;font-weight:700;color:#0B0D10;;line-height:1.05">Comprá por tipo de uso</h2>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;">
     <a href="#catalogo" onClick="{{ navRun }}" style="position:relative;display:block;aspect-ratio:4/5;max-height:620px;width:100%;border-radius:24px;overflow:hidden;background:#E4EAEE;">
-      <div style="position:absolute;inset:0;background:#E4EAEE;"><image-slot id="uso-correr" src="uso-correr.jpg" shape="rect" placeholder="Foto IA realista: corredor en plena zancada en Equipetrol al amanecer, zapatillas negras, ropa técnica oscura, luz lateral cálida"></image-slot></div>
+      <div style="position:absolute;inset:0;background:#E4EAEE;"><img id="uso-correr" src="uso-correr.jpg" alt="Corredor en un parque de Santa Cruz" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
       <div style="position:absolute;left:0;right:0;bottom:0;padding:28px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;background:linear-gradient(0deg,rgba(11,13,16,0.65),rgba(11,13,16,0));">
         <div style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:clamp(28px,3cqi,40px);font-weight:700;letter-spacing:-0.03em;color:#FFFFFF;">Para correr</span><span style="font-size:15px;color:#D7DBE0;">Salidas diarias, entrenamientos y carreras</span></div>
         <span style="width:48px;height:48px;border-radius:50%;background:#D63A5B;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">→</span>
       </div>
     </a>
     <a href="#catalogo" onClick="{{ navDay }}" style="position:relative;display:block;aspect-ratio:4/5;max-height:620px;width:100%;border-radius:24px;overflow:hidden;background:#E4EAEE;">
-      <div style="position:absolute;inset:0;background:#E4EAEE;"><image-slot id="uso-dia" src="uso-dia.jpg" shape="rect" placeholder="Foto IA realista: profesional de 30-40 años caminando en un parque de Santa Cruz, ropa casual, zapatillas blancas, luz de tarde natural"></image-slot></div>
+      <div style="position:absolute;inset:0;background:#E4EAEE;"><img id="uso-dia" src="uso-dia.jpg" alt="Hombre caminando con zapatillas cómodas frente a un café" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
       <div style="position:absolute;left:0;right:0;bottom:0;padding:28px;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;background:linear-gradient(0deg,rgba(11,13,16,0.65),rgba(11,13,16,0));">
         <div style="display:flex;flex-direction:column;gap:6px;"><span style="font-size:clamp(28px,3cqi,40px);font-weight:700;letter-spacing:-0.03em;color:#FFFFFF;">Para todo el día</span><span style="font-size:15px;color:#D7DBE0;">Trabajo, viajes y caminatas</span></div>
         <span style="width:48px;height:48px;border-radius:50%;background:#D63A5B;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">→</span>
